@@ -4,9 +4,31 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { createStore, applyMiddleware } from 'redux'
+import rootReducer from './modules'
+import { Provider } from 'react-redux'
+
+import ReduxThunk from 'redux-thunk'
+import logger from 'redux-logger'
+
+import { Router } from 'react-router-dom'
+
+import { createBrowserHistory } from 'history'
+
+const customHistory = createBrowserHistory()
+
+const store = createStore(rootReducer, applyMiddleware(
+  ReduxThunk.withExtraArgument({ history: customHistory }),
+  logger
+))
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router history={customHistory}>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
