@@ -65,6 +65,8 @@ export const SliderWrapper=styled.div`
     width: 300%;
     display: flex;
     position: relative;
+    transition: 1s;
+    transform: translateX(calc(-100%/3));
 `
 export const SliderItem=styled.div`
     width: 100%;
