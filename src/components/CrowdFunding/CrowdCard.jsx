@@ -12,7 +12,7 @@ function CrowdCard({data}){
                 </S.CardHeader>
                 <S.CardTitle>{data.title}</S.CardTitle>
                 <S.CardFooter>
-                    <S.CrowdNow>{data.now}원 펀딩</S.CrowdNow>
+                    <S.CrowdNow>{data.now.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원 펀딩</S.CrowdNow>
                     <S.CrowdDday>D-{data.Dday}</S.CrowdDday>
                 </S.CardFooter>
             </S.CrowdDesc>

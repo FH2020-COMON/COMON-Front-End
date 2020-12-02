@@ -7,7 +7,7 @@ export const Header = styled.header`
     height: 55px;
     justify-content: space-between;
     align-items: center;
-    margin: 0 10px;
+    margin: 0 30px;
 `;
 export const HeaderMenu = styled.ul`
     display: flex;
