@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css';
 
 import { Main } from './containers'
-import Header from "./components/Public/Header/Header"
+import Test from "./components/CrowdFunding/CrowdList"
 import { GlobalStyle } from "./GlobalStyled"
 import { BrowserRouter, Route } from 'react-router-dom'
 
@@ -12,7 +12,7 @@ function App() {
       <GlobalStyle></GlobalStyle>
       <BrowserRouter>
         <Route exact path="/" component={Main} />
-        <Route exact path="/test" component={Header}></Route>
+        <Route exact path="/test" component={Test}></Route>
       </BrowserRouter>
     </>
   );
