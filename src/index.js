@@ -7,7 +7,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import { createStore, applyMiddleware } from 'redux'
-import rootReducer from './modules'
+import rootReducer from './modules/reducers'
 import { Provider } from 'react-redux'
 
 import ReduxThunk from 'redux-thunk'

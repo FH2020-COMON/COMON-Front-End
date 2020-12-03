@@ -36,10 +36,9 @@ function CrowdSlider(){
                 <S.SliderItem></S.SliderItem>
             </S.SliderWrapper>
             <S.SliderButtons>
-                <div onClick={prevSlide}>(이오우</div>
-                <div onClick={nextSlide}>아에오)</div>
-                
-                <div></div>
+                <S.SlideArrow onClick={prevSlide}><i className="fas fa-chevron-left"></i></S.SlideArrow>
+                <S.SlideArrow onClick={nextSlide}><i className="fas fa-chevron-right"></i></S.SlideArrow>
+                <S.SlideState>{currentSlide+1}/{TOTAL_SLIDES}</S.SlideState>
             </S.SliderButtons>
         </S.SliderContainers>
     )
