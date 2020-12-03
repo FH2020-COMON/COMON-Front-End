@@ -52,8 +52,18 @@ export const Login_Form=styled.form`
         border-radius: 30px;
         cursor: pointer;
         font-size: 15px;
-        margin-top: 50px;
         font-weight: bold;
+        margin-top: 30px;
+    }
+    & p{
+        text-align: "end";
+        margin-top: 20px;
+        font-size: 14px;
+        cursor: pointer;
+        color: #333;
+        &:hover{
+            text-decoration: underline;
+        }
     }
     & h4{
         margin-top: 10px;

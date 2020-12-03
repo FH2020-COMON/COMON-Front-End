@@ -1,8 +1,5 @@
-import { useDispatch } from "react-redux";
-import { ModalState } from "../../../modules/actions/userAction";
 import * as S from "./styles"
-function Login(){
-    const dispatch=useDispatch();
+function Register(){
     return(
         <S.Modal_Wrapper>
             <S.Modal_Logo>
@@ -13,10 +10,11 @@ function Login(){
                 <input placeholder="아이디를 입력해주세요" type="text"/>
                 <h4>비밀번호</h4>
                 <input placeholder="비밀번호를 입력해주세요" type="password"/>
-                <p onClick={()=>dispatch(ModalState("Register"))} style={{textAlign: "end"}}>아직 커몬 계정이 없으신가요?</p>
+                <h4>비밀번호 확인</h4>
+                <input placeholder="비밀번호를 입력해주세요" type="password"/>
                 <button>커몬 시작하기</button>
             </S.Login_Form>
         </S.Modal_Wrapper>
     );
 }
-export default Login;
+export default Register;
