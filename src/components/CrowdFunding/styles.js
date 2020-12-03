@@ -2,7 +2,7 @@ import styled from 'styled-components';
 const main_color = "#7B00FF";
 
 export const CrowdWrapper= styled.div`
-    margin: 0 3.5rem;
+    margin: 0 7rem;
 `
 export const CrowdList = styled.div`
     display: flex;
