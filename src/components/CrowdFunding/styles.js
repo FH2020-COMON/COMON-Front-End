@@ -60,6 +60,7 @@ export const CrowdDday=styled.div`
 export const SliderContainers=styled.div`
     width: 100%;
     overflow: hidden;
+    position: relative;
 `
 export const SliderWrapper=styled.div`
     width: 300%;
@@ -93,4 +94,24 @@ export const SliderDetails=styled.h4`
 `
 export const SliderButtons=styled.div`
     display: flex;
+    bottom: 80px;
+    align-items: center;
+    position: absolute;
+    left: 130px;
+`
+export const SlideState=styled.div`
+    background: white;
+    color: #7B00FF;
+    width: 65px;
+    text-align: center;
+    font-weight: bold;
+    padding: 3px 0;
+    font-size: 18px;
+    border-radius: 30px;
+`
+export const SlideArrow=styled.div`
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    padding-right: 15px;
 `

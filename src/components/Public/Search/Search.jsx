@@ -5,12 +5,15 @@ function Search({state}){
     function changeHandler(e){
         setValue(e.target.value);
     }
+    function onSubmit(e){
+        e.preventDefault();
+    }
     return(
-        <div style={{textAlign:state}}>
+        <form onSubmit={onSubmit} style={{textAlign:state}}>
             <S.SearchWrapper>
                 <S.SearchInput placeholder="검색어를 입력해주세요.." value={value} onChange={changeHandler}></S.SearchInput>
             </S.SearchWrapper>
-        </div>
+        </form>
     )
 }
 export default Search;
