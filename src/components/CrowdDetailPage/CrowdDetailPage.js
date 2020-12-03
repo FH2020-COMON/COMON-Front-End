@@ -5,7 +5,7 @@ import data from './dummydata'
 
 import ProjectImg from '../../assets/projectDetail.png'
 
-const CrowdDetailPage = () => {
+const CrowdDetailPage = React.memo(() => {
     const [percent, setPercent] = useState(0)
     const [count, setCount] = useState(0)
     const [price, setPrice] = useState(0)
@@ -67,6 +67,18 @@ const CrowdDetailPage = () => {
             clearInterval(interGP.current)
         }
     }, [goalPrice])
+
+    const countRender = React.useMemo(() => (
+        <S.Title fontSize="26px">{price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</S.Title>
+    ), [price])
+
+    const percentRender = React.useMemo(() => (
+        <S.Title>달성률 {count}%</S.Title>
+    ), [count])
+
+    const gageRender = React.useMemo(() => (
+        <S.ProgressBarDiv width={percent} />
+    )   , [percent])
     
     return (
         <>
@@ -81,10 +93,10 @@ const CrowdDetailPage = () => {
                         <S.ImgMain src="https://scontent.xx.fbcdn.net/v/t1.15752-9/127925082_717831708864362_3306144467799133087_n.png?_nc_cat=100&ccb=2&_nc_sid=58c789&_nc_ohc=__oMOf0RcIgAX8Yyy9-&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=b02b97f2b6f8cc878eeb733d881a38a8&oe=5FEE0A99" />
                         <S.DetailWrapper>
                             <S.Title mb="30px" color="#7B00FF" fontSize="22px">{data.category}</S.Title>
-                            <S.TempWrapper><S.Title fontSize="26px">{price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</S.Title><S.Title style={{marginLeft: "10px"}} color="rgb(150, 150, 150)" fontSize="20px">{data.state}</S.Title></S.TempWrapper>
-                            <S.TempWrapper justify><S.Title>달성률 {count}%</S.Title><S.Title>목표금액 {data.goalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</S.Title></S.TempWrapper>
+                            <S.TempWrapper>{countRender}<S.Title style={{marginLeft: "10px"}} color="rgb(150, 150, 150)" fontSize="20px">{data.state}</S.Title></S.TempWrapper>
+                            <S.TempWrapper justify>{percentRender}<S.Title>목표금액 {data.goalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</S.Title></S.TempWrapper>
                             <S.ProgressBar>
-                                <S.ProgressBarDiv width={percent} />
+                                {gageRender}
                             </S.ProgressBar>
                             <S.Title color="rgb(130, 130, 130)" mb="-8px" ml="auto" fontSize="16px">D-20</S.Title>
                             <S.TempWrapper justify>
@@ -108,6 +120,6 @@ const CrowdDetailPage = () => {
             </S.BottomWrapper>
         </>
     )
-}
+})
 
 export default CrowdDetailPage

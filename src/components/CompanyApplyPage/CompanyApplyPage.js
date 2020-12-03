@@ -14,7 +14,7 @@ const CompanyApplyPage = () => {
                     <S.ContentBottomWrapper>
                         <S.ImgMain src="https://scontent.xx.fbcdn.net/v/t1.15752-9/127925082_717831708864362_3306144467799133087_n.png?_nc_cat=100&ccb=2&_nc_sid=58c789&_nc_ohc=__oMOf0RcIgAX8Yyy9-&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=b02b97f2b6f8cc878eeb733d881a38a8&oe=5FEE0A99" />
                         <S.DetailWrapper>
-                            <S.Title mb="30px" color="rgb(165, 165, 165)" fontSize="18px">(주)스타트업최고</S.Title>
+                            <S.Title mb="15px" color="rgb(165, 165, 165)" fontSize="18px">(주)스타트업최고</S.Title>
                             <S.Title fontSize="32px">프론트엔드 개발자 모집</S.Title>
                             <S.TempWrapper justify><S.Title fontSize="21px">남은 기간</S.Title><S.Title color="rgb(170, 170, 170)" fontSize="17px">D-20</S.Title></S.TempWrapper>
                             <S.TagWrapper>
