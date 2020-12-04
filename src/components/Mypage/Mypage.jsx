@@ -1,7 +1,13 @@
 import * as S from "./styles"
 import Header from "../Public/Header/Header"
 import Spectrum from "../Public/Spectrum/Spectrum";
+import { useDispatch } from "react-redux";
+import { ModalState } from "../../modules/actions/userAction";
 function Mypage(){
+    const dispatch = useDispatch();
+    function setModal(){
+        dispatch(ModalState("SwitchAccount"));
+    }
     return(
         <>
             <Header></Header>
@@ -13,7 +19,7 @@ function Mypage(){
                             <S.Myname>안은결 | 사장</S.Myname>
                             <S.Mycompany>(주) 재밌다.</S.Mycompany>
                         </S.Mydetails>
-                        <S.SwitchAccount>계정전환</S.SwitchAccount>
+                        <S.SwitchAccount onClick={setModal}>계정전환</S.SwitchAccount>
                     </S.Myprofile>
                     <Spectrum></Spectrum>
                     <S.MyElement><i className="fas fa-flag"></i> 공지사항</S.MyElement>

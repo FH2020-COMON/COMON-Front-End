@@ -1,5 +1,16 @@
+import { useState } from "react";
 import * as S from "./styles"
 function SwitchAccount(){
+    const [licenseNum,setlicenseNum] = useState("");
+    function licenseNumHandler(e){
+        if(licenseNum.length < 10){
+            setlicenseNum(e.target.value);
+        }
+        else if(licenseNum.length == 10){
+            setlicenseNum("");
+        }
+        
+    }
     return(
         <S.Modal_Wrapper>
             <S.Modal_Logo>
@@ -9,7 +20,7 @@ function SwitchAccount(){
                 <h4>회사이름</h4>
                 <input placeholder="회사이름을 입력해주세요" type="text"/>
                 <h4>사업자 등록번호</h4>
-                <input placeholder="사업자 등록번호를 입력해주세요" type="password"/>
+                <input value={licenseNum.replace(/(\d{3})(\d{2})(\d{5})/, '$1-$2-$3')} onChange={licenseNumHandler} placeholder="사업자 등록번호를 입력해주세요" type="text"/>
                 <button>Owner계정으로 변경하기</button>
             </S.Login_Form>
         </S.Modal_Wrapper>
