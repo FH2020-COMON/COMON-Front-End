@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { ModalState } from "../../../modules/actions/userAction";
+import Invest from "./Invest";
 import Login from "./Login"
 import Register from "./Register";
 import * as S from "./styles"
@@ -16,6 +17,8 @@ function Modals(){
                                 <Login></Login>
                             :state=="Register"?
                                 <Register></Register>
+                            :state=="Invest"?
+                                <Invest></Invest>
                             :null
                         }
                         <S.Modal_overlay onClick={()=>dispatch(ModalState(""))}></S.Modal_overlay>

@@ -4,6 +4,8 @@ import Header from '../Public/Header/Header'
 import data from './dummydata'
 
 import ProjectImg from '../../assets/projectDetail.png'
+import { ModalState } from '../../modules/actions/userAction'
+import { useDispatch } from 'react-redux'
 
 const CrowdDetailPage = React.memo(() => {
     const [percent, setPercent] = useState(0)
@@ -79,7 +81,10 @@ const CrowdDetailPage = React.memo(() => {
     const gageRender = React.useMemo(() => (
         <S.ProgressBarDiv width={percent} />
     )   , [percent])
-    
+    const dispatch = useDispatch();
+    function setModal(state){
+        dispatch(ModalState(state));
+    }
     return (
         <>
             <S.Wrapper>
@@ -100,7 +105,7 @@ const CrowdDetailPage = React.memo(() => {
                             </S.ProgressBar>
                             <S.Title color="rgb(130, 130, 130)" mb="-8px" ml="auto" fontSize="16px">D-20</S.Title>
                             <S.TempWrapper justify>
-                                <S.Button borderColor="#7B00FF" padding="8px 77px" bgColor="#7B00FF" color="white">투자하기</S.Button>
+                                <S.Button onClick={()=>setModal("Invest")} borderColor="#7B00FF" padding="8px 77px" bgColor="#7B00FF" color="white">투자하기</S.Button>
                                 <S.TempWrapper width="240px" justify>
                                     <S.Button borderColor="rgb(230, 230, 230)" padding="8px 12px">관심 있어요</S.Button>
                                     <S.Button borderColor="rgb(230, 230, 230)" padding="8px 12px">공유하기</S.Button>
