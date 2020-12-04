@@ -12,8 +12,8 @@ function Header(){
             <S.Header>
                 <S.Logo></S.Logo>
                 <S.HeaderMenu>
-                    <li><Link to="/asd">모집</Link></li>
-                    <li>펀딩</li>
+                    <li><Link to="/companynotice">모집</Link></li>
+                    <li><Link to="/crowdfunding">펀딩</Link></li>
                     <li onClick={()=>setModal("Login")}>로그인</li>
                 </S.HeaderMenu>
             </S.Header>
