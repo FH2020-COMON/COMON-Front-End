@@ -66,6 +66,12 @@ export const ContentBodyRight = styled.div`
     height: 100%;
 `
 
+export const ListWrapper = styled.div`
+    width: 300px;
+    height: 400px;
+    position: absolute;
+`
+
 // Item styled
 export const ItemWrapper = styled.div`
     height: 36px;
