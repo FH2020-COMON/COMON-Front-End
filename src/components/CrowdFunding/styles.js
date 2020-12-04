@@ -1,5 +1,17 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 const main_color = "#7B00FF";
+
+const FadeIn = keyframes`
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+`
 
 export const CrowdWrapper= styled.div`
     margin: 0 7rem;
@@ -48,6 +60,12 @@ export const CrowdCard = styled.div`
             margin-left: calc((100% - (330px * 4)) / 3);
         }
     }
+    opacity: 0;
+    transform: translateX(-20px);
+    animation-name: ${FadeIn};
+    animation-duration: 0.75s;
+    animation-delay: 0.${props => props.index || 0}s;
+    animation-fill-mode: forwards;
 `   
 export const CrowdDesc = styled.div`
     width: 100%;
