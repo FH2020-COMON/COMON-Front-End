@@ -10,6 +10,8 @@ import CompanyNotice from './components/CompanyNotice/CompanyNotice'
 
 import { GlobalStyle } from "./GlobalStyled"
 import { BrowserRouter, Route } from 'react-router-dom'
+import CompanyApply from './components/CompanyApply/CompanyApply';
+import Mypage from './components/Mypage/Mypage';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route exact path="/asd" component={CrowdDetailPage} />
         <Route exact path="/qwer" component={CompanyApplyPage} />
         <Route exact path="/zxcv" component={CompanyNotice} />
+        <Route exact path="/apply" component={CompanyApply} /> 
+        <Route exact path="/mypage" component={Mypage} /> 
       </BrowserRouter>
     </>
   );
