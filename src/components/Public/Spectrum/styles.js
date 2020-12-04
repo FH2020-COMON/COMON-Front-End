@@ -11,6 +11,7 @@ export const Bar=styled.div`
     height: 100%;
     background: white;
     width: 5px;
+    cursor: pointer;
     border-radius: 50%;
     margin-left: calc( 100% / 14 );
 `

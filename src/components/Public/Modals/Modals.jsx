@@ -3,7 +3,9 @@ import { ModalState } from "../../../modules/actions/userAction";
 import Invest from "./Invest";
 import Login from "./Login"
 import Register from "./Register";
+import StartInterview from "./StartInterview";
 import * as S from "./styles"
+import SwitchAccount from "./SwitchAccount";
 function Modals(){
     const state=useSelector(state => state.user.modal_state);
     const dispatch=useDispatch();
@@ -19,6 +21,10 @@ function Modals(){
                                 <Register></Register>
                             :state=="Invest"?
                                 <Invest></Invest>
+                            :state=="StartInterview"?
+                                <StartInterview></StartInterview>
+                            :state=="SwitchAccount"?
+                                <SwitchAccount></SwitchAccount>
                             :null
                         }
                         <S.Modal_overlay onClick={()=>dispatch(ModalState(""))}></S.Modal_overlay>
