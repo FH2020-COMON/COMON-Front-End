@@ -56,7 +56,7 @@ function CrowdList(){
         <S.CrowdList>
             {
                 Data.map((i)=>{
-                    return(<CrowdCard data={i}></CrowdCard>);
+                    return(<CrowdCard crowd data={i}></CrowdCard>);
                 })
             }  
         </S.CrowdList>

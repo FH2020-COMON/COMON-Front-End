@@ -3,24 +3,51 @@ const main_color = "#7B00FF";
 
 export const CrowdWrapper= styled.div`
     margin: 0 7rem;
+    width: calc(100% - 14rem);
 `
 export const CrowdList = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
 `
 
 export const ImgBox = styled.div`
     width: 100%;
 `;
 export const CrowdCard = styled.div`
-    width: 330px;
+    max-width: 330px;
     height: 291px;
     font-weight: bold;
     cursor: pointer;
     border-radius: 5px;
     border: 1px solid #eee;
     margin: 10px 0;
+
+    @media only screen and (min-width: 910px) and (max-width: 1219px) {
+        &:nth-child(2n + 2) {
+            margin-left: calc((100% - (330px * 2)) / 1);
+        }
+    }
+
+    @media only screen and (min-width: 1220px) and (max-width: 1559px) {
+        &:nth-child(3n + 2) {
+            margin-left: calc((100% - (330px * 3)) / 2);
+        }
+        &:nth-child(3n + 3) {
+            margin-left: calc((100% - (330px * 3)) / 2);
+        }
+    }
+
+    @media only screen and (min-width: 1560px) {
+        &:nth-child(4n + 2) {
+            margin-left: calc((100% - (330px * 4)) / 3);
+        }
+        &:nth-child(4n + 3) {
+            margin-left: calc((100% - (330px * 4)) / 3);
+        }
+        &:nth-child(4n + 4) {
+            margin-left: calc((100% - (330px * 4)) / 3);
+        }
+    }
 `   
 export const CrowdDesc = styled.div`
     width: 100%;
