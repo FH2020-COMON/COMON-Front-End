@@ -106,9 +106,9 @@ const CrowdDetailPage = React.memo(() => {
                             <S.Title color="rgb(130, 130, 130)" mb="-8px" ml="auto" fontSize="16px">D-20</S.Title>
                             <S.TempWrapper justify>
                                 <S.Button onClick={()=>setModal("Invest")} borderColor="#7B00FF" padding="8px 77px" bgColor="#7B00FF" color="white">투자하기</S.Button>
-                                <S.TempWrapper width="240px" justify>
-                                    <S.Button borderColor="rgb(230, 230, 230)" padding="8px 12px">관심 있어요</S.Button>
-                                    <S.Button borderColor="rgb(230, 230, 230)" padding="8px 12px">공유하기</S.Button>
+                                <S.TempWrapper width="260px" justify>
+                                    <S.Button borderColor="rgb(230, 230, 230)" padding="8px 12px"><i className="far fa-heart"></i> 관심 있어요</S.Button>
+                                    <S.Button borderColor="rgb(230, 230, 230)" padding="8px 12px"><i className="far fa-share-square"></i> 공유하기</S.Button>
                                 </S.TempWrapper>
                             </S.TempWrapper>
                         </S.DetailWrapper>
