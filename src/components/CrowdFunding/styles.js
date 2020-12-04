@@ -142,3 +142,15 @@ export const SlideArrow=styled.div`
     font-size: 18px;
     padding-right: 15px;
 `
+
+export const LikeButton = styled.button`
+    padding: 3px 7px;
+    background: #7B00FF;
+    color: white;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    outline: none;
+    border: none;
+    cursor: pointer;
+` 
