@@ -1,1 +1,2 @@
 export const MODAL_STATE = "MODAL_STATE"
+export const INTERVIEW_STATE = "INTERVIEW_STATE"

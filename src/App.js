@@ -10,6 +10,7 @@ import { GlobalStyle } from "./GlobalStyled"
 import { BrowserRouter, Route } from 'react-router-dom'
 import CompanyApply from './components/CompanyApply/CompanyApply';
 import Mypage from './components/Mypage/Mypage';
+import InterviewPage from './components/InterviewPage/InterviewPage';
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
         <Route exact path="/crowddetail" component={CrowdDetailPage} />
         <Route exact path="/companyapply" component={CompanyApplyPage} />
         <Route exact path="/companynotice" component={CompanyNotice} />
+        <Route exact path="/interview" component={InterviewPage}></Route>
+        <Route exact path="/test" component={CompanyApply}></Route>
         <Route path="/company" component={CompanyPage} />
       </BrowserRouter>
     </>
