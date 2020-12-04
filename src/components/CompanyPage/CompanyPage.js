@@ -1,76 +1,10 @@
 import React, { useState } from 'react'
 import * as S from './styles'
 import Header from '../Public/Header/Header'
-import MarkdownItem from './MarkdownItem'
+import CompanyParentItem from './CompanyParentItem'
 import MarkdownView from './MarkdownVeiw'
 
 import { Route } from 'react-router-dom'
-
-const data = [
-    {
-
-    },
-    {
-
-    },
-    {
-
-    },
-    {
-
-    },
-    {
-
-    },
-    {
-
-    },
-    {
-
-    },
-    {
-
-    },
-    {
-
-    },
-    {
-
-    },
-    {
-
-    },
-    {
-
-    },
-    {
-
-    },
-    {
-
-    },
-    {
-
-    },
-    {
-
-    },
-    {
-
-    },
-    {
-
-    },
-    {
-
-    },
-    {
-
-    },
-    {
-
-    },
-]
 
 const CompanyPage = React.memo(() => {
     const [listState, setListState] = useState(false)
@@ -95,11 +29,9 @@ const CompanyPage = React.memo(() => {
                 </S.ContentHeader>
                 <S.ContentBodyWrapper>
                     <S.ContentBodyLeft>
-                        {
-                            data.map((val, i) => (
-                                <MarkdownItem key={i} name={i} index={i} />
-                            ))
-                        }
+                        <CompanyParentItem title="문서" />
+                        <CompanyParentItem title="회의" />
+                        <CompanyParentItem title="채팅" />
                     </S.ContentBodyLeft>
                     <S.ContentBodyRight>
                         <Route path="/company/:MarkName" component={MarkdownView} /> 
