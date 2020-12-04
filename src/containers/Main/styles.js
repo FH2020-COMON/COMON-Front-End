@@ -80,6 +80,9 @@ export const HeaderButtonWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     width: 150px;
+    & a{
+        color: white;
+    }
 `
 
 export const HeaderButton = styled.button`
