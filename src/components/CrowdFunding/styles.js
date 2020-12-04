@@ -64,7 +64,7 @@ export const CrowdCard = styled.div`
     transform: translateX(-20px);
     animation-name: ${FadeIn};
     animation-duration: 0.75s;
-    animation-delay: 0.${props => props.index || 0}s;
+    animation-delay: ${props => props.index / 10 || 0}s;
     animation-fill-mode: forwards;
 `   
 export const CrowdDesc = styled.div`
