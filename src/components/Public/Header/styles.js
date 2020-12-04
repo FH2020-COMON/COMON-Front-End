@@ -11,6 +11,9 @@ export const Header = styled.header`
 `;
 export const HeaderMenu = styled.ul`
     display: flex;
+    & a{
+        color: #7b00f7;
+    }
     & li{
         margin: 0 10px;
         cursor: pointer;

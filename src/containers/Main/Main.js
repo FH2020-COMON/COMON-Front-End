@@ -4,6 +4,7 @@ import * as S from './styles'
 import logo from '../../assets/logoWhite.png'
 import { useDispatch } from 'react-redux';
 import { ModalState } from '../../modules/actions/userAction';
+import { Link } from 'react-router-dom';
 
 const Main = () => {
     const dispatch = useDispatch();
@@ -15,8 +16,9 @@ const Main = () => {
             <S.HeaderWrapper>
                 <S.HeaderLogo src={logo} />
                 <S.HeaderButtonWrapper>
+                    <S.HeaderButton><Link to="/companynotice">모집</Link></S.HeaderButton>
+                    <S.HeaderButton><Link to="/crowdfunding">펀딩</Link></S.HeaderButton>
                     <S.HeaderButton onClick={()=>setModal("Login")}>로그인</S.HeaderButton>
-                    <S.HeaderButton onClick={()=>setModal("Register")}>회원가입</S.HeaderButton>
                 </S.HeaderButtonWrapper>
             </S.HeaderWrapper>
             <S.ContentWrapper>
