@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 export const Wrapper = styled.div`
     width: 100%;
@@ -70,9 +70,31 @@ export const ListWrapper = styled.div`
     width: 300px;
     height: 400px;
     position: absolute;
+    right: 10px;
+    top: 130px;
+    background: yellow;
+    border-radius: 3px;
 `
 
 // Item styled
+const ListAnimation = keyframes`
+    0% {
+        transform: scale(0.7);
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    65% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+        transform: translateY(0);
+        opacity: 1;
+    }
+`
+
 export const ItemWrapper = styled.div`
     height: 36px;
     margin: 16px 20px 6px;
@@ -82,6 +104,15 @@ export const ItemWrapper = styled.div`
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    
+    transform: scale(0.7);
+    transform: translateY(20px);
+    opacity: 0;
+
+    animation-name: ${ListAnimation};
+    animation-duration: 0.6s;
+    animation-delay: ${props => props.index / 30 || 0}s;
+    animation-fill-mode: forwards;
 `
 
 // markdown view

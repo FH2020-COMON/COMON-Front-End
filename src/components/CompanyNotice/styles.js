@@ -1,4 +1,16 @@
-import styled, {css} from 'styled-components'
+import styled, {css, keyframes} from 'styled-components'
+
+const slideAnimation = keyframes`
+    from {
+        transform: translateY(20px);
+        opacity: 0;  
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+`
 
 export const Wrapper = styled.div`
     width: 100%;
@@ -45,6 +57,14 @@ export const CompanyCardWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     z-index: 0;
+
+    transform: translateY(20px);
+    opacity: 0;  
+
+    animation-name: ${slideAnimation};
+    animation-duration: 0.75s;
+    animation-delay: ${props => props.index / 10 || 0}s;
+    animation-fill-mode: forwards;
 `
 
 export const CompanyHead = styled.div`
