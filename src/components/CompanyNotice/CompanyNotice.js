@@ -40,7 +40,7 @@ const CompanyNotice = () => {
             </S.RankWrapper>
             <C.CrowdWrapper>
                 <Search state="end"></Search>
-                <h4 style={{marginBottom: "10px"}}>진행중인 투자</h4>
+                <h3 style={{marginBottom: "10px"}}>모집중인 회사</h3>
                 <CrowdList type="notice" />
             </C.CrowdWrapper>
         </S.Wrapper>

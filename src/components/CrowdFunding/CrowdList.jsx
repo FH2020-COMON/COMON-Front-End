@@ -55,8 +55,8 @@ function CrowdList(props){
     return(
         <S.CrowdList>
             {
-                Data.map((i)=>{
-                    return(<CrowdCard type={props.type} data={i}></CrowdCard>);
+                Data.map((val, i)=>{
+                    return(<CrowdCard type={props.type} data={val} index={i}></CrowdCard>);
                 })
             }  
         </S.CrowdList>

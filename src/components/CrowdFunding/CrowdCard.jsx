@@ -3,7 +3,7 @@ import * as C from '../CompanyNotice/styles'
 function CrowdCard (props){
     const {data} = props
     return(
-        <S.CrowdCard>
+        <S.CrowdCard index={props.index}>
             <S.ImgBox>
                 <img src={data.src}></img>
             </S.ImgBox>
