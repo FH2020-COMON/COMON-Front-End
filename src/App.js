@@ -19,6 +19,13 @@ function App() {
       <BrowserRouter>
         <Route exact path="/" component={Main} />
         <Route exact path="/crowdfunding" component={CrowdFunding}></Route>
+<<<<<<< HEAD
+=======
+        <Route exact path="/asd" component={CrowdDetailPage} />
+        <Route exact path="/qwer" component={CompanyApplyPage} />
+        <Route exact path="/zxcv" component={CompanyNotice} />
+        <Route exact path="/apply" component={CompanyApply} /> 
+>>>>>>> develop
         <Route exact path="/mypage" component={Mypage} /> 
         <Route exact path="/crowddetail" component={CrowdDetailPage} />
         <Route exact path="/companyapply" component={CompanyApplyPage} />
