@@ -7,6 +7,8 @@ import MarkdownItem from './MarkdownItem'
 
 import {getRooms} from '../../modules/actions/userAction'
 
+import { ModalState } from '../../modules/actions/userAction'
+
 const data = [
     {
 
@@ -72,6 +74,10 @@ const CompanyParentItem = React.memo((props) => {
         setState(!state)
     }
 
+    const onClickNewElement = () => {
+        dispatch(ModalState("Element"))
+    }
+
     useEffect(() => {
         hello.current = true
     }, [])
@@ -92,7 +98,7 @@ const CompanyParentItem = React.memo((props) => {
                         <S.Title ml="7px" color="rgb(80, 80, 80)" trans>{props.title}</S.Title>
                     </div>
                 </S.NotionButton>
-                <S.PlusButton onClick={() => {console.log('asd')}}><i className="fas fa-plus" /></S.PlusButton>
+                <S.PlusButton onClick={onClickNewElement}><i className="fas fa-plus" /></S.PlusButton>
             </S.ButtonsWrapper>
             {
                 props.title === "채팅" ? (

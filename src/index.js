@@ -17,12 +17,16 @@ import { Router } from 'react-router-dom'
 
 import { createBrowserHistory } from 'history'
 
+import Socket from './socket'
+
 const customHistory = createBrowserHistory()
 
 const store = createStore(rootReducer, applyMiddleware(
   ReduxThunk.withExtraArgument({ history: customHistory }),
   logger
 ))
+
+Socket.setStore(store)
 
 ReactDOM.render(
   <React.StrictMode>
