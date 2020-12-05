@@ -1,10 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { ModalState } from "../../../modules/actions/userAction";
+import CreateCategory from "./CreateCategory";
 import HwpViewr from "./HwpViewr";
 import Invest from "./Invest";
 import Login from "./Login"
 import Register from "./Register";
 import StartInterview from "./StartInterview";
+import CreateElement from "./CreateElement"
 import * as S from "./styles"
 import SwitchAccount from "./SwitchAccount";
 function Modals(){
@@ -28,6 +30,10 @@ function Modals(){
                                 <SwitchAccount></SwitchAccount>
                             :state=="Hwp"?
                                 <HwpViewr></HwpViewr>
+                            :state=="Element"?
+                                <CreateElement></CreateElement>
+                            :state=="Category"?
+                                <CreateCategory></CreateCategory>
                             :null
                         }
                         <S.Modal_overlay onClick={()=>dispatch(ModalState(""))}></S.Modal_overlay>

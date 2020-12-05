@@ -142,3 +142,12 @@ export const Cheering_Message=styled.textarea`
     padding: 8px;
     margin: 0 16px;
 `
+
+export const RadioLabel=styled.label`
+    display: flex;
+    align-items: center;
+    & div{
+        margin-left: 10px;
+        font-size: 14px;
+    }
+`
