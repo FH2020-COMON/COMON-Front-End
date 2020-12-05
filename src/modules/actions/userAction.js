@@ -18,3 +18,9 @@ export function setToken(token){
         payload: token,
     }
 }
+export function TitleState(state) {
+    return {
+        type: CHANGE_TITLE,
+        payload: state
+    }
+}
