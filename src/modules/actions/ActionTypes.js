@@ -9,3 +9,9 @@ export const CHANGE_TITLE= "CHANGE_TITLE"
 export const GET_CHAT_ROOMS = "GET_CHAT_ROOMS"
 export const GET_CHAT_ROOMS_SUCCESS = "GET_CHAT_ROOMS_SUCCESS"
 export const GET_CHAT_ROOMS_ERROR = "GET_CHAT_ROOMS_ERROR"
+
+export const GET_ROOMID = "GET_ROOMID"
+
+export const GET_CHAT_INFOR = "GET_CHAT_INFOR"
+
+export const NEW_ROOM = "NEW_ROOM"

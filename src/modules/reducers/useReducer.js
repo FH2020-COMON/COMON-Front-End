@@ -1,17 +1,26 @@
-import { INTERVIEW_STATE, 
-         MODAL_STATE, 
-         CHANGE_TITLE,
-         GET_CHAT_ROOMS,
-          ACCESS_TOKEN, 
-          GET_CHAT_ROOMS_ERROR,
-          GET_CHAT_ROOMS_SUCCESS} from "../actions/ActionTypes";
+import {INTERVIEW_STATE, 
+        MODAL_STATE, 
+        CHANGE_TITLE,
+        GET_CHAT_ROOMS,
+        ACCESS_TOKEN, 
+        GET_CHAT_ROOMS_ERROR,
+        GET_CHAT_ROOMS_SUCCESS,
+        GET_CHAT_INFOR,
+        GET_ROOMID,
+        NEW_ROOM} from "../actions/ActionTypes";
 
 const initalState = {
     room_list: {
         loading: false,
         data: null,
         error: null
-    }
+    },
+    chat: [
+
+    ],
+    rooms: [
+
+    ],
 } 
 
 export default function(state=initalState ,action){
@@ -38,7 +47,7 @@ export default function(state=initalState ,action){
                 ...state,
                 room_list: {
                     loading: false,
-                    data: action.payload,
+                    data: action.payload.data,
                     error: null
                 }
             }
@@ -48,8 +57,32 @@ export default function(state=initalState ,action){
                 room_list: {
                     loading: false,
                     data: null,
-                    error: action.payload
+                    error: action.payload.data
                 }
+            }
+
+        case GET_CHAT_INFOR:
+            return {
+                ...state,
+                chat: [
+                    ...state.chat,
+                    action.payload
+                ]
+            }
+
+        case GET_ROOMID:
+            return {
+                ...state,
+                room_id: action.payload
+            }
+
+        case NEW_ROOM:
+            return {
+                ...state,
+                rooms: [
+                    ...state.rooms,
+                    action.payload
+                ]
             }
         default: 
             return state;

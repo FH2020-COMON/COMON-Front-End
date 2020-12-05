@@ -6,6 +6,10 @@ import MarkdownView from './MarkdownVeiw'
 import ChatView from './ChatView'
 import ProfileCard from './ProfileCard'
 
+import axios from 'axios'
+
+import Socket from '../../socket'
+
 import { Route } from 'react-router-dom'
 
 import { useSelector, useDispatch } from 'react-redux'
@@ -31,11 +35,8 @@ const CompanyPage = React.memo(() => {
         dispatch(ModalState("Category"))
     }
 
-    const onClickNewElement = () => {
-        dispatch(ModalState("Element"))
-    }
-
     useEffect(() => {
+        Socket.Init()
         start.current = true
     }, [])
 
@@ -65,9 +66,9 @@ const CompanyPage = React.memo(() => {
                 </S.ContentHeader>
                 <S.ContentBodyWrapper>
                     <S.ContentBodyLeft>
-                        <CompanyParentItem title="문서" onClick={onClickNewElement} />
-                        <CompanyParentItem title="회의" onClick={onClickNewElement} />
-                        <CompanyParentItem title="채팅" onClick={onClickNewElement} />
+                        <CompanyParentItem title="문서" />
+                        <CompanyParentItem title="회의" />
+                        <CompanyParentItem title="채팅" />
                     </S.ContentBodyLeft>
                     <S.ContentBodyRight>
                         <Route path="/company/document/:MarkName" component={MarkdownView} /> 
