@@ -2,6 +2,8 @@ import * as S from "./styles"
 import Header from "../Public/Header/Header"
 import { useCallback, useRef, useState } from "react";
 import { Viewer } from "hwp.js";
+import { request } from "../../modules/axios/axios";
+import Axios from "axios";
 function CompanyApply(){
     const [file,setFile]=useState({ name: "선택된 파일 없음"});
     const ref = useRef(null)
@@ -28,6 +30,19 @@ function CompanyApply(){
             let data=new FormData();
             data.append("file", file);
             console.log(data);
+            const url="http://ec2-54-180-98-91.ap-northeast-2.compute.amazonaws.com/recruiting/apply"
+            Axios.post(url, data, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization' : "Bearer " + localStorage.getItem("access_token")
+                }
+            })
+            .then((res)=>{
+                console.log(res);
+            })
+            .catch((e)=>{
+                console.log(e);
+            })
         }
     }
     return(

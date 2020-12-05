@@ -3,6 +3,8 @@ import Header from "../Public/Header/Header"
 import Spectrum from "../Public/Spectrum/Spectrum";
 import { useDispatch } from "react-redux";
 import { ModalState, setToken } from "../../modules/actions/userAction";
+import { useEffect } from "react";
+import { request } from "../../modules/axios/axios";
 function Mypage(){
     const dispatch = useDispatch();
     function setModal(){
@@ -13,6 +15,12 @@ function Mypage(){
         dispatch(setToken(null));
         alert("로그아웃 되었습니다.")
     }
+    useEffect(()=>{
+        request("get","/user/myPage",{'Authorization' : "Bearer " + localStorage.getItem("access_token")}, "")
+        .then((res)=>{
+            console.log(res);
+        })
+    },[])
     return(
         <>
             <Header></Header>

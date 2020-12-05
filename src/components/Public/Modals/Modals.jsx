@@ -9,6 +9,7 @@ import StartInterview from "./StartInterview";
 import CreateElement from "./CreateElement"
 import * as S from "./styles"
 import SwitchAccount from "./SwitchAccount";
+import CreateFunding from "./CreateFunding";
 function Modals(){
     const state=useSelector(state => state.user.modal_state);
     const dispatch=useDispatch();
@@ -34,6 +35,8 @@ function Modals(){
                                 <CreateElement></CreateElement>
                             :state=="Category"?
                                 <CreateCategory></CreateCategory>
+                            :state=="CreateFunding"?
+                                <CreateFunding></CreateFunding>
                             :null
                         }
                         <S.Modal_overlay onClick={()=>dispatch(ModalState(""))}></S.Modal_overlay>

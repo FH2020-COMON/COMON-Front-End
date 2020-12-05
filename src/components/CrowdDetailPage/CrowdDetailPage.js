@@ -1,17 +1,19 @@
 import React, {useEffect, useState, useRef} from 'react'
 import * as S from './styles'
 import Header from '../Public/Header/Header'
-import data from './dummydata'
 
 import ProjectImg from '../../assets/projectDetail.png'
 import { ModalState } from '../../modules/actions/userAction'
 import { useDispatch } from 'react-redux'
+import { request } from '../../modules/axios/axios'
 
-const CrowdDetailPage = React.memo(() => {
+const CrowdDetailPage = React.memo((props) => {
     const [percent, setPercent] = useState(0)
     const [count, setCount] = useState(0)
     const [price, setPrice] = useState(0)
     const [goalPrice, setGoalPrice] = useState(0)
+    const [loading, setLoading] =useState(false);
+    const [data,setData] = useState(null);
     const cb = useRef()
     const cbP = useRef()
     const cbGP = useRef()
@@ -22,7 +24,16 @@ const CrowdDetailPage = React.memo(() => {
     const callback = () => {
         setCount(count + 1)
     }
-
+    useEffect(()=>{
+        setLoading(true);
+        request("get","/crowd/" + props.match.params.id, "", "")
+        .then((res)=>{
+            setData(res);
+            alert(res);
+        })
+        setLoading(false);
+        
+    },[])
     const priceCallback = () => {
         setPrice(Math.round(price + (data.price / 100)))
     }
@@ -85,6 +96,8 @@ const CrowdDetailPage = React.memo(() => {
     function setModal(state){
         dispatch(ModalState(state));
     }
+    if(loading) return (<div>로딩중...</div>)
+    if(!data) return (<div>데이터 없음</div>)
     return (
         <>
             <S.Wrapper>

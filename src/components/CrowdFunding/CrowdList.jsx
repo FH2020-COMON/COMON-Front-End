@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react"
+import { useHistory } from "react-router";
+import { request } from "../../modules/axios/axios";
 import CrowdCard from "./CrowdCard"
 import * as S from "./styles"
 const Data=
@@ -52,11 +55,33 @@ const Data=
     }
 ]
 function CrowdList(props){
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const history=useHistory();
+    function ToLink(id){
+        if(props.type=="notice"){
+            history.push("/companyapply/" + id.apply_id); 
+        }else{    
+            history.push("/crowddetail/" + id.crowd_id);
+        }
+    }
+    useEffect(()=>{
+        const url=props.type=="notice" ? "/apply":"/crowd"
+        setLoading(true);
+        request("get", url, "", "")
+        .then((res)=>{
+            console.log(res);
+            setData(res);
+        })
+        setLoading(false);
+    },[])
+    if(loading) return(<div>로딩중</div>);
+    if(!data) return("데이터없음");
     return(
         <S.CrowdList>
             {
-                Data.map((val, i)=>{
-                    return(<CrowdCard type={props.type} data={val} index={i}></CrowdCard>);
+                data.map((val, i)=>{
+                    return(<CrowdCard onClick={()=>ToLink(val)} type={props.type} data={val} index={i}></CrowdCard>);
                 })
             }  
         </S.CrowdList>
