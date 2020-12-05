@@ -14,7 +14,7 @@ function CreateFunding(){
         hashTag : "",
         year: new Date().getFullYear(),
         month: new Date().getMonth(),
-        day: new Date().getDay(),
+        day: new Date().getDate(),
         hour : new Date().getHours(),
         minute: new Date().getMinutes(),
     })
