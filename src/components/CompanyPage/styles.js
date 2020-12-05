@@ -101,6 +101,50 @@ export const NotionButton = styled.button`
     display: flex;
     align-items: center;
     white-space: nowrap;
+    justify-content: space-between;
+`
+
+export const ButtonsWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    margin-right: 35px;
+`
+
+export const PhoneButton = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    margin-right: 13px;
+    border: none;
+    background: rgba(0, 0, 0, 0);
+    outline: none;
+    cursor: pointer;
+`
+
+
+export const CategoryButton = styled.div`
+    display: flex;
+    width: calc(100% - 72px);
+    height: 36px;
+    margin: 16px 36px 6px;
+    border: none;
+    outline: none;
+    background: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    justify-content: space-between;
+`
+
+export const Line = styled.hr`
+    width: 100%;
+    height: 1px;
+    background: black;
+    margin-right: 20px;
 `
 
 // Item styled
@@ -257,4 +301,29 @@ export const ChatTopWrapper = styled.div`
     display: flex;
     flex-direction: column; 
     height: calc(100% - 60px);
+`
+
+export const PlusButton = styled.button`
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    color: ${props => props.color || "black"};
+    background: ${props => props.bgColor || "#FCFCFC"};
+    outline: none;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    transition: all 0.2s linear;
+    ${props => !props.none && css`
+        transform: translateY(6px);
+    `}
+
+    &:hover {
+        text-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    &:active {
+        transition-duration: 0.05s;
+        text-shadow: none;
+    }
 `

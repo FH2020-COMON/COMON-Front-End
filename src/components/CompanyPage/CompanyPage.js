@@ -7,11 +7,19 @@ import ChatView from './ChatView'
 
 import { Route } from 'react-router-dom'
 
+import { useSelector } from 'react-redux'
+
 const CompanyPage = React.memo(() => {
     const [listState, setListState] = useState(false)
 
+    const Title = useSelector(state => state.user.title_state)
+
     const onClickList = () => {
         setListState(!listState)
+    }
+
+    const onClickPhone = () => {
+
     }
 
     return (
@@ -20,7 +28,11 @@ const CompanyPage = React.memo(() => {
             <S.ContentWrapper>
                 <S.ContentHeader>
                     <S.Title width="280px" color="white" fontSize="19px" padding="0 33px" bgColor="#7B00FF">(주)스타트업최고</S.Title>
-                    <S.ListButton onClick={onClickList}><i className="fas fa-user-friends fa-2x" style={{color: "#7B00FF"}} /></S.ListButton>
+                    <S.Title>{Title}</S.Title>
+                    <div style={{display: "flex"}}>
+                        <S.PhoneButton onClick={onClickPhone}><i class="fas fa-phone fa-2x" style={{color: "#7B00FF"}} /></S.PhoneButton>
+                        <S.ListButton onClick={onClickList}><i className="fas fa-user-friends fa-2x" style={{color: "#7B00FF"}} /></S.ListButton>
+                    </div>
                     {
                         listState === true && (
                         <S.ListWrapper>
@@ -30,6 +42,10 @@ const CompanyPage = React.memo(() => {
                 </S.ContentHeader>
                 <S.ContentBodyWrapper>
                     <S.ContentBodyLeft>
+                        <S.CategoryButton>
+                            <S.Line />  
+                            <S.PlusButton none><i className="fas fa-plus" /></S.PlusButton>
+                        </S.CategoryButton>
                         <CompanyParentItem title="문서" />
                         <CompanyParentItem title="회의" />
                         <CompanyParentItem title="채팅" />
