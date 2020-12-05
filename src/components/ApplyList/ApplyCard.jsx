@@ -1,5 +1,5 @@
 import * as S from "./styles"
-function ApplyCard(){
+function ApplyCard(props){
     return(
         <S.Card>
             <S.CompanyDetails>

@@ -7,6 +7,7 @@ import Login from "./Login"
 import Register from "./Register";
 import StartInterview from "./StartInterview";
 import CreateElement from "./CreateElement"
+import CreateApply from "./CreateApply"
 import * as S from "./styles"
 import SwitchAccount from "./SwitchAccount";
 import CreateFunding from "./CreateFunding";
@@ -37,6 +38,8 @@ function Modals(){
                                 <CreateCategory></CreateCategory>
                             :state=="CreateFunding"?
                                 <CreateFunding></CreateFunding>
+                            :state=="CreateApply"?
+                                <CreateApply></CreateApply>
                             :null
                         }
                         <S.Modal_overlay onClick={()=>dispatch(ModalState(""))}></S.Modal_overlay>

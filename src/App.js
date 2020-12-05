@@ -37,7 +37,7 @@ function App() {
         <Route exact path="/companyapply/:id" component={CompanyApplyPage} />
         <Route exact path="/companynotice" component={CompanyNotice} />
         <Route exact path="/interview" component={InterviewPage}></Route>
-        <Route exact path="/employees" component={EmployeeList}></Route>
+        <Route exact path="/applylist" component={ApplyList}></Route>
         <Route exact path="/applicantlist" component={ApplicantList}></Route>
         <Route exact path="/apply" component={CompanyApply}></Route>
         <Route path="/company" component={CompanyPage} />

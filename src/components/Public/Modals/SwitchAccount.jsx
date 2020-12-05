@@ -19,8 +19,8 @@ function SwitchAccount(){
     function submit(e){
         e.preventDefault();
         const body={
-            companyName: name,
-            companyAddress: licenseNum
+            name: name,
+            address: licenseNum
         }
         request("post","/company",{'Authorization' : "Bearer " + localStorage.getItem("access_token")},body)
     }

@@ -9,8 +9,7 @@ function CrowdFunding(){
             <Header></Header>
             <Slider></Slider>
             <S.CrowdWrapper>
-                <Search state="end"></Search>
-                <h3 style={{marginBottom: "10px"}}>진행중인 투자</h3>
+                <h3 style={{margin: "10px 0"}}>진행중인 투자</h3>
                 <CrowdList type="crowd"></CrowdList>
             </S.CrowdWrapper>
         </>
