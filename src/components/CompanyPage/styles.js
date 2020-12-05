@@ -127,6 +127,7 @@ export const ListWrapper = styled.div`
     flex-wrap: wrap;
 
     overflow-y: scroll;
+    z-index: 10000;
 
     &::-webkit-scrollbar {
         display: none;

@@ -11,19 +11,18 @@ function CreateElementChat(){
 
     const onSubmitCa = async (e) => {
         e.preventDefault()
-        const asd= await axios({
+        await axios({
             url: `${baseURL}/company/room/create`,
             method: "POST",
             headers: {
-                "authorization": `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDcyMDQ3NzgsInN1YiI6InN5aUBzeWkiLCJleHAiOjE2MDczNTQ3NzgsInR5cGUiOiJhY2Nlc3NfdG9rZW4ifQ.WgNLX8qz8IYkzjH80262D6Mk3wNqIxbUglCxvlBdfVY`
+                "authorization": "Bearer " + localStorage.getItem("access_token")
             },
             data: {
                 title: name
             }
         })
-        console.log(asd)
-        dispatch(ModalState("none"))
         dispatch(getRooms())
+        dispatch(ModalState("none"))
     }
 
     const onChangeName = e => {

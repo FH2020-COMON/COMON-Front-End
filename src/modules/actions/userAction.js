@@ -45,12 +45,11 @@ export function TitleState(state) {
 export const getRooms = () => async dispatch => {
     dispatch({ type: GET_CHAT_ROOMS })
     try {
-        const token = "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDcyMDQ3NzgsInN1YiI6InN5aUBzeWkiLCJleHAiOjE2MDczNTQ3NzgsInR5cGUiOiJhY2Nlc3NfdG9rZW4ifQ.WgNLX8qz8IYkzjH80262D6Mk3wNqIxbUglCxvlBdfVY"
         const rooms = await axios({
             url: `${baseURL}/company/room/list`,
             method: "GET",
             headers: {
-                "authorization": `Bearer ${token}`
+                "authorization": "Bearer " + localStorage.getItem("access_token")
             }
         })
         dispatch({type: GET_CHAT_ROOMS_SUCCESS, payload: rooms})
@@ -83,11 +82,10 @@ export const newRoom = roomInfor => {
 export const myInfor = () => async dispatch => {
     dispatch({type: GET_MY_INFOR})
     try {
-        const token = "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDcyMDQ3NzgsInN1YiI6InN5aUBzeWkiLCJleHAiOjE2MDczNTQ3NzgsInR5cGUiOiJhY2Nlc3NfdG9rZW4ifQ.WgNLX8qz8IYkzjH80262D6Mk3wNqIxbUglCxvlBdfVY"
         const information = await axios({
             url: `${baseURL}:8000/user/myPage`,
             headers: {
-                "authorization": `Bearer ${token}`
+                "authorization": "Bearer " + localStorage.getItem("access_token")
             } 
         })
         console.log(information)

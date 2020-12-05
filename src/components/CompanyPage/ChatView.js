@@ -26,7 +26,7 @@ const ChatView = (props) => {
             url: `${baseURL}/company/chat/${roomId}`,
             method: "POST",
             headers: {
-                "authorization": `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDcyMDQ3NzgsInN1YiI6InN5aUBzeWkiLCJleHAiOjE2MDczNTQ3NzgsInR5cGUiOiJhY2Nlc3NfdG9rZW4ifQ.WgNLX8qz8IYkzjH80262D6Mk3wNqIxbUglCxvlBdfVY`
+                "authorization": "Bearer " + localStorage.getItem("access_token")
             },
             data: {
                 chat: chat

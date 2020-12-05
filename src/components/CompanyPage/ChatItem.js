@@ -14,8 +14,8 @@ const ChatItem = (props) => {
     return(
         <>
             <S.ChatItemWrapper>
-                <S.Title other={infor.user_name === props.user ? false : true} line padding="28px 0 10px 0" fontSize="15px">{props.user}</S.Title>
-                <S.ChatItem other={infor.user_name === props.user ? false : true}>{props.message}</S.ChatItem>
+                <S.Title other={infor.data && infor.data.data.name === props.user ? false : true} line padding="28px 0 10px 0" fontSize="15px">{props.user}</S.Title>
+                <S.ChatItem other={infor.data && infor.data.data.name === props.user ? false : true}>{props.message}</S.ChatItem>
             </S.ChatItemWrapper>
         </>
     )
