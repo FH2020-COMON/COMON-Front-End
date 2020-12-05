@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+
 import * as S from './styles'
 
 import MarkdownItem from './MarkdownItem'
@@ -59,10 +60,15 @@ const data = [
 
 const CompanyParentItem = React.memo((props) => {
     const [state, setState] = useState(false)
+    const hello = useRef()
 
     const onClickButton = () => {
         setState(!state)
     }
+
+    useEffect(() => {
+        hello.current = true
+    }, [])
 
     return (
         <>
@@ -77,7 +83,7 @@ const CompanyParentItem = React.memo((props) => {
             </S.ButtonsWrapper>
             {
                 data.map((val, i) => (
-                    <MarkdownItem key={i} name={i} index={i} type={state === true ? "in" : "out"} chat={props.title === "채팅" ? true : false} />
+                    <MarkdownItem key={i} name={i} index={i} type={state === true ? "in" : hello.current === true ? "out" : "asd"} chat={props.title === "채팅" ? true : false} />
                 ))
             }
         </>

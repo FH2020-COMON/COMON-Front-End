@@ -28,7 +28,7 @@ const ChatView = (props) => {
                 }
             </S.ChatTopWrapper>
             <S.ChatBottomWrapper onSubmit={(e) => {e.preventDefault()}}> 
-                <S.ChatInput type="text" />
+                <S.ChatInput type="text" placeholder="채팅을 입력하세요." />
                 <S.ChatButton>보내기</S.ChatButton>
             </S.ChatBottomWrapper>
         </S.ChatWrapper>

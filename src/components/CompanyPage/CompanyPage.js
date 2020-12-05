@@ -33,12 +33,9 @@ const CompanyPage = React.memo(() => {
                         <S.PhoneButton onClick={onClickPhone}><i class="fas fa-phone fa-2x" style={{color: "#7B00FF"}} /></S.PhoneButton>
                         <S.ListButton onClick={onClickList}><i className="fas fa-user-friends fa-2x" style={{color: "#7B00FF"}} /></S.ListButton>
                     </div>
-                    {
-                        listState === true && (
-                        <S.ListWrapper>
+                    <S.ListWrapper type={listState === true ? "in" : "out"}>
 
-                        </S.ListWrapper>)
-                    }
+                    </S.ListWrapper>
                 </S.ContentHeader>
                 <S.ContentBodyWrapper>
                     <S.ContentBodyLeft>

@@ -1,4 +1,7 @@
-const { MODAL_STATE, INTERVIEW_STATE, CHANGE_TITLE } = require("./ActionTypes");
+const { MODAL_STATE, 
+        INTERVIEW_STATE, 
+        CHANGE_TITLE,
+        CHANGE_ANIMATION_STATE } = require("./ActionTypes");
 
 export function ModalState(state){
     return{
