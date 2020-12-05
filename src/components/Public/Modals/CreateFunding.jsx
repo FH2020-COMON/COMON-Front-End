@@ -10,8 +10,8 @@ function CreateFunding(){
     const [file2,setFile2]=useState({ name: "선택된 파일 없음"});
     const dispatch=useDispatch();
     const [value, onChange]=useInputs({
-        crowdTitle: "",
-        destinationAmount : ""
+        crowd_name: "",
+        destination_amount : ""
     })
     function handler(e){  
         setFile(e.target.files[0]);
@@ -40,9 +40,9 @@ function CreateFunding(){
             </S.Modal_Logo>
             <S.Login_Form>
                 <h4>제목</h4>
-                <input name="crowdTitle" value={value.crowdTitle} onChange={onChange} placeholder="펀딩 타이틀을 입력하세요" type="text"/>
+                <input name="crowd_name" value={value.crowd_name} onChange={onChange} placeholder="펀딩 타이틀을 입력하세요" type="text"/>
                 <h4>목표금액</h4>
-                <input name="destinationAmount" value={value.destinationAmount} onChange={onChange} placeholder="목표금액을 설정해주세요" type="text"/>
+                <input name="destination_amount" value={value.destination_amount} onChange={onChange} placeholder="목표금액을 설정해주세요" type="text"/>
                 <input onChange={handler} type="file"/>
                 <input onChange={handler2} type="file"/>
                 <button onClick={onSubmit}>펀딩 생성하기</button>

@@ -7,7 +7,6 @@
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.3.0",
     "axios": "^0.21.0",
-    "gh-pages": "^2.0.1",
     "history": "^5.0.0",
     "hwp.js": "0.0.3",
     "react": "^17.0.1",
@@ -48,6 +47,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "homepage": "https://fh2020-comon.github.io/COMON-Front-End/"
+  }
 }
