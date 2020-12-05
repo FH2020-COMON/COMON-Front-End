@@ -16,6 +16,7 @@ class Socket {
     Init () {
         //user, roomId, chat
         this.socket.on("chat", chatInfor => {
+            console.log("asd"+chatInfor)
             this.store.dispatch(getChatInfor(chatInfor))
         })
 

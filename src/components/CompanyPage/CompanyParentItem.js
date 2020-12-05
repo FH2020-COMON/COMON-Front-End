@@ -65,30 +65,33 @@ const data = [
 
 const CompanyParentItem = React.memo((props) => {
     const [state, setState] = useState(false)
+    const [list, setList] = useState([])
     const hello = useRef()
 
     const ChatRoomList = useSelector(state => state.user.room_list)
     const dispatch = useDispatch()
 
     const onClickButton = () => {
+        hello.current = true
         setState(!state)
     }
 
     const onClickNewElement = () => {
-        dispatch(ModalState("Element"))
+        dispatch(ModalState(`Element${props.title === "채팅" ? "Chat" : "Document"}`))
     }
-
-    useEffect(() => {
-        hello.current = true
-    }, [])
 
     useEffect(() => {
         dispatch(getRooms())
     }, [dispatch])
 
-    if (ChatRoomList.loading) return <div>로딩중...</div>;
-    if (ChatRoomList.error) return <div>에러 발생!</div>;
-    if (!ChatRoomList.data) return null;
+    useEffect(() => {
+        console.log(list)
+        setList(ChatRoomList)
+    }, [ChatRoomList])
+
+    if (list.loading) return <div>로딩중...</div>;
+    if (list.error) return <div>에러 발생!</div>;
+    if (!list.data) return null;
     return (
         <>
             <S.ButtonsWrapper>
@@ -102,12 +105,12 @@ const CompanyParentItem = React.memo((props) => {
             </S.ButtonsWrapper>
             {
                 props.title === "채팅" ? (
-                ChatRoomList.data.map((val, i) => (
-                    <MarkdownItem key={i} name={i} index={i} type={state === true ? "in" : hello.current === true ? "out" : "asd"} chat={props.title === "채팅" ? true : false} />
+                list.data.map((val, i) => (
+                    <MarkdownItem chats={val.chats} title={val.title} roomId={val.room_id} key={i} name={i} index={i} type={state === true ? "in" : hello.current === true ? "out" : "asd"} chat={props.title === "채팅" ? true : false} />
                 )))
                  : (
                     data.map((val, i) => (
-                        <MarkdownItem key={i} name={i} index={i} type={state === true ? "in" : hello.current === true ? "out" : "asd"} chat={props.title === "채팅" ? true : false} />
+                        <MarkdownItem title="회의록" key={i} name={i} index={i} type={state === true ? "in" : hello.current === true ? "out" : "asd"} chat={props.title === "채팅" ? true : false} />
                     ))
                 )
             }

@@ -8,7 +8,7 @@ import ProfileCard from './ProfileCard'
 
 import axios from 'axios'
 
-import Socket from '../../socket'
+import Socket, {baseURL} from '../../socket'
 
 import { Route } from 'react-router-dom'
 
@@ -18,6 +18,7 @@ import { ModalState } from '../../modules/actions/userAction'
 
 const CompanyPage = React.memo(() => {
     const [listState, setListState] = useState(false)
+    const [title, setTitle] = useState("")
     const dispatch = useDispatch()
     const start = useRef()
 
@@ -35,9 +36,20 @@ const CompanyPage = React.memo(() => {
         dispatch(ModalState("Category"))
     }
 
+    const asd = async () => {
+        return await axios({
+            method: "GET",
+            url: `${baseURL}/company/my`,
+            headers: {
+                "authorization": `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDcyMDQ3NzgsInN1YiI6InN5aUBzeWkiLCJleHAiOjE2MDczNTQ3NzgsInR5cGUiOiJhY2Nlc3NfdG9rZW4ifQ.WgNLX8qz8IYkzjH80262D6Mk3wNqIxbUglCxvlBdfVY`
+            }
+        })
+    }
+
     useEffect(() => {
         Socket.Init()
         start.current = true
+        setTitle(asd())
     }, [])
 
     return (
@@ -46,7 +58,7 @@ const CompanyPage = React.memo(() => {
             <S.ContentWrapper>
                 <S.ContentHeader>
                     <S.Title justify width="280px" color="white" fontSize="19px" padding="0 33px" bgColor="#7B00FF">
-                        <span>(주)스타트업최고</span>
+                        <span>{title}</span>
                         <S.CategoryButton onClick={onClickNewDocument}>
                             <i class="fas fa-file-medical fa-2x" style={{color: "white"}} />
                         </S.CategoryButton>

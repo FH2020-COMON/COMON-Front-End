@@ -1,25 +1,60 @@
-import React from 'react'
+import React, { useState } from 'react'
 import * as S from './styles'
 import ChatItem from './ChatItem'
 
-const data = [
-]
+import axios from 'axios'
+
+import { useSelector, useDispatch } from 'react-redux'
+
+import { useHistory } from 'react-router-dom'
+
+import { getRooms } from '../../modules/actions/userAction'
+
+import { baseURL } from '../../socket'
 
 const ChatView = (props) => {
+    const [chat, setChat] = useState("")
+    const roomId = useSelector(state => state.user.room_id)
+    const chats = useSelector(state => state.user.chats)
+    const dispatch = useDispatch()
+    const history = useHistory()
+
+    const onSubmitChat = async e => {
+        e.preventDefault()
+
+        await axios({
+            url: `${baseURL}/company/chat/${roomId}`,
+            method: "POST",
+            headers: {
+                "authorization": `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDcyMDQ3NzgsInN1YiI6InN5aUBzeWkiLCJleHAiOjE2MDczNTQ3NzgsInR5cGUiOiJhY2Nlc3NfdG9rZW4ifQ.WgNLX8qz8IYkzjH80262D6Mk3wNqIxbUglCxvlBdfVY`
+            },
+            data: {
+                chat: chat
+            }
+        })
+    }
+
+    const onChangeChat = e => {
+        console.log(chats)
+        setChat(e.target.value)
+    }
+
     return (
-        <S.ChatWrapper>
-            <S.ChatTopWrapper>
-                {
-                    data.map(val => (
-                        <ChatItem user={val.user} message={val.message} />
-                    ))
-                }
-            </S.ChatTopWrapper>
-            <S.ChatBottomWrapper onSubmit={(e) => {e.preventDefault()}}> 
-                <S.ChatInput type="text" placeholder="채팅을 입력하세요." />
+        <div style={{display: "flex", flexDirection: "column", width: "100%", height: "100%", alignItems: "center"}}>
+            <S.ChatWrapper>
+                <S.ChatTopWrapper>
+                    {
+                        chats ? chats.map(val => (
+                            <ChatItem user={val.user_name} message={val.chat} />
+                        )) : <></>
+                    }
+                </S.ChatTopWrapper>
+            </S.ChatWrapper>
+            <S.ChatBottomWrapper onSubmit={onSubmitChat}> 
+                <S.ChatInput value={chat} onChange={onChangeChat} type="text" placeholder="채팅을 입력하세요." />
                 <S.ChatButton>보내기</S.ChatButton>
             </S.ChatBottomWrapper>
-        </S.ChatWrapper>
+        </div>
     )
 }
 

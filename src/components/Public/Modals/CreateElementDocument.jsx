@@ -1,5 +1,6 @@
 import * as S from "./styles"
-function CreateCategory(){
+
+function CreateElementDocument(){
     const onSubmitCa = (e) => {
         e.preventDefault()
     }
@@ -12,17 +13,9 @@ function CreateCategory(){
             <S.Login_Form onSubmit={onSubmitCa}>
                 <h4>요소명</h4>
                 <input placeholder="요소명을 입력해주세요" type="text"/>
-                <S.RadioLabel>
-                    <input type="radio" name="state"></input>
-                    <div>채팅</div>      
-                </S.RadioLabel>
-                <S.RadioLabel>
-                    <input type="radio" name="state"></input>
-                    <div>문서</div>
-                </S.RadioLabel>
                 <button>요소 생성하기</button>
             </S.Login_Form>
         </S.Modal_Wrapper>
     );
 }
-export default CreateCategory;
+export default CreateElementDocument;

@@ -108,6 +108,7 @@ const ListWrapperOutAnimation = keyframes`
     to {
         opaciry: 0;
         display: none;
+        height: 0;
     }
 `
 
@@ -285,11 +286,17 @@ export const ListButton = styled.button`
 //chatView
 export const ChatWrapper = styled.div`
     width: 100%;
-    height: 100%;
+    height: calc(100% - 60px);
     padding: 0 20px;
+    margin-bottom: 50px;
     display: flex;
     flex-direction: column;
     position: relative;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        display: none;  
+    }
 `
 
 export const ChatItem = styled.span`
@@ -316,10 +323,9 @@ export const ChatItemWrapper = styled.div`
 export const ChatBottomWrapper = styled.form`
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 96%;
     height: 55px;
     background: rgba(0, 0, 0, 0);
-    transform: translateY(-10px);
 `
 
 export const ChatInput = styled.input`

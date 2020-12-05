@@ -6,7 +6,8 @@ import Invest from "./Invest";
 import Login from "./Login"
 import Register from "./Register";
 import StartInterview from "./StartInterview";
-import CreateElement from "./CreateElement"
+import CreateElementChat from "./CreateElementChat"
+import CreateElementDocument from "./CreateElementDocument"
 import * as S from "./styles"
 import SwitchAccount from "./SwitchAccount";
 import CreateFunding from "./CreateFunding";
@@ -31,8 +32,10 @@ function Modals(){
                                 <SwitchAccount></SwitchAccount>
                             :state=="Hwp"?
                                 <HwpViewr></HwpViewr>
-                            :state=="Element"?
-                                <CreateElement></CreateElement>
+                            :state=="ElementChat"?
+                                <CreateElementChat></CreateElementChat>
+                            :state=="ElementDocument"?
+                                <CreateElementDocument></CreateElementDocument>
                             :state=="Category"?
                                 <CreateCategory></CreateCategory>
                             :state=="CreateFunding"?

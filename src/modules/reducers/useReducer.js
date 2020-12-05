@@ -7,7 +7,11 @@ import {INTERVIEW_STATE,
         GET_CHAT_ROOMS_SUCCESS,
         GET_CHAT_INFOR,
         GET_ROOMID,
-        NEW_ROOM} from "../actions/ActionTypes";
+        NEW_ROOM,
+        GET_MY_INFOR,
+        GET_MY_INFOR_SUCCESS,
+        GET_MY_INFOR_ERROR,
+        SET_CHATS} from "../actions/ActionTypes";
 
 const initalState = {
     room_list: {
@@ -21,6 +25,11 @@ const initalState = {
     rooms: [
 
     ],
+    my_infor: {
+        loading: false,
+        data: null,
+        error: null
+    }
 } 
 
 export default function(state=initalState ,action){
@@ -62,10 +71,11 @@ export default function(state=initalState ,action){
             }
 
         case GET_CHAT_INFOR:
+            console.log(action.payload)
             return {
                 ...state,
-                chat: [
-                    ...state.chat,
+                chats: [
+                    ...state.chats,
                     action.payload
                 ]
             }
@@ -79,9 +89,50 @@ export default function(state=initalState ,action){
         case NEW_ROOM:
             return {
                 ...state,
-                rooms: [
-                    ...state.rooms,
-                    action.payload
+                room_list: {
+                    ...state.room_list,
+                    data: [
+                        ...state.room_list.data,
+                        action.payload
+                    ]
+                }
+            }
+
+        case GET_MY_INFOR:
+            return {
+                ...state,
+                my_infor: {
+                    loading: true,
+                    data: null,
+                    error: null
+                }
+            }
+
+        case GET_MY_INFOR_SUCCESS:
+            return {
+                ...state,
+                my_infor: {
+                    loading: false,
+                    data: action.payload,
+                    error: null
+                }
+            }
+
+        case GET_MY_INFOR_ERROR:
+            return {
+                ...state,
+                my_infor: {
+                    loading: false,
+                    data: null,
+                    error: action.payload
+                }
+            }
+
+        case SET_CHATS:
+            return {
+                ...state,
+                chats: [
+                    ...action.payload
                 ]
             }
         default: 

@@ -11,6 +11,10 @@ const { MODAL_STATE,
     GET_ROOMID,
     GET_CHAT_INFOR,
     NEW_ROOM,
+    GET_MY_INFOR,
+    GET_MY_INFOR_SUCCESS,
+    GET_MY_INFOR_ERROR,
+    SET_CHATS
 } = require("./ActionTypes");
 
 export function ModalState(state){
@@ -41,11 +45,12 @@ export function TitleState(state) {
 export const getRooms = () => async dispatch => {
     dispatch({ type: GET_CHAT_ROOMS })
     try {
+        const token = "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDcyMDQ3NzgsInN1YiI6InN5aUBzeWkiLCJleHAiOjE2MDczNTQ3NzgsInR5cGUiOiJhY2Nlc3NfdG9rZW4ifQ.WgNLX8qz8IYkzjH80262D6Mk3wNqIxbUglCxvlBdfVY"
         const rooms = await axios({
             url: `${baseURL}/company/room/list`,
             method: "GET",
             headers: {
-                "authorization": `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDcxNzEzMTQsInN1YiI6ImV1bmd5ZW9sZUBuYXZlci5jb20iLCJleHAiOjE2MDczMjEzMTQsInR5cGUiOiJhY2Nlc3NfdG9rZW4ifQ.oPjk0VxPnm2_karLBY-kPbGSUOr4PQwGCv7whY2qUK4`
+                "authorization": `Bearer ${token}`
             }
         })
         dispatch({type: GET_CHAT_ROOMS_SUCCESS, payload: rooms})
@@ -72,5 +77,29 @@ export const newRoom = roomInfor => {
     return {
         type: NEW_ROOM,
         payload: roomInfor
+    }
+}
+
+export const myInfor = () => async dispatch => {
+    dispatch({type: GET_MY_INFOR})
+    try {
+        const token = "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDcyMDQ3NzgsInN1YiI6InN5aUBzeWkiLCJleHAiOjE2MDczNTQ3NzgsInR5cGUiOiJhY2Nlc3NfdG9rZW4ifQ.WgNLX8qz8IYkzjH80262D6Mk3wNqIxbUglCxvlBdfVY"
+        const information = await axios({
+            url: `${baseURL}:8000/user/myPage`,
+            headers: {
+                "authorization": `Bearer ${token}`
+            } 
+        })
+        console.log(information)
+        dispatch({type: GET_MY_INFOR_SUCCESS, payload: information})
+    } catch(e) {
+        dispatch({type: GET_MY_INFOR_ERROR, payload: e})
+    }
+}
+
+export const setChats = (state) => {
+    return {
+        type: SET_CHATS,
+        payload: state
     }
 }

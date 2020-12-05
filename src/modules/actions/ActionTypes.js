@@ -15,3 +15,9 @@ export const GET_ROOMID = "GET_ROOMID"
 export const GET_CHAT_INFOR = "GET_CHAT_INFOR"
 
 export const NEW_ROOM = "NEW_ROOM"
+
+export const GET_MY_INFOR = "GET_MY_INFOR"
+export const GET_MY_INFOR_SUCCESS = "GET_MY_INFOR_SUCCESS"
+export const GET_MY_INFOR_ERROR = "GET_MY_INFOR_ERROR"
+
+export const SET_CHATS = "SET_CHATS"
