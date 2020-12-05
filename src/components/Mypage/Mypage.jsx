@@ -23,6 +23,7 @@ function Mypage(){
                     </S.Myprofile>
                     <Spectrum></Spectrum>
                     <S.MyElement><i className="fas fa-flag"></i> 공지사항</S.MyElement>
+                    <S.MyElement><i className="fas fa-clipboard-list"></i> 면접현황</S.MyElement>
                     <S.MyElement><i className="fas fa-exclamation-circle"></i> 버전정보</S.MyElement>
                     <S.MyElement><i className="fas fa-phone-alt"></i> 고객센터</S.MyElement>
                
