@@ -3,18 +3,6 @@ import * as S from './styles'
 import ChatItem from './ChatItem'
 
 const data = [
-    {
-        user: "qwer1234",
-        message: "안녕"
-    },
-    {
-        user: "qwer1234",
-        message: "안녕"
-    },
-    {
-        user: "qwer1234",
-        message: "안녕"
-    }
 ]
 
 const ChatView = (props) => {

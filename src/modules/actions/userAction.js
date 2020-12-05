@@ -1,4 +1,13 @@
-const { MODAL_STATE, CHANGE_TITLE, INTERVIEW_STATE, ACCESS_TOKEN } = require("./ActionTypes");
+import Socket, {baseURL} from '../../socket/socket'
+import axios from 'axios'
+
+const { MODAL_STATE, 
+    CHANGE_TITLE, 
+    INTERVIEW_STATE, 
+    ACCESS_TOKEN,
+    GET_CHAT_ROOMS,
+    GET_CHAT_ROOMS_SUCCESS,
+    GET_CHAT_ROOMS_ERROR } = require("./ActionTypes");
 
 export function ModalState(state){
     return{
@@ -22,5 +31,20 @@ export function TitleState(state) {
     return {
         type: CHANGE_TITLE,
         payload: state
+    }
+}
+
+export const getRooms = () => async dispatch => {
+    dispatch({ type: GET_CHAT_ROOMS })
+    try {
+        const rooms = await axios(`${baseURL}/company/room/list`, {
+            method: "GET",
+            headers: {
+                "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDcxNzEzMTQsInN1YiI6ImV1bmd5ZW9sZUBuYXZlci5jb20iLCJleHAiOjE2MDczMjEzMTQsInR5cGUiOiJhY2Nlc3NfdG9rZW4ifQ.oPjk0VxPnm2_karLBY-kPbGSUOr4PQwGCv7whY2qUK4"
+            }
+        })
+        dispatch({type: GET_CHAT_ROOMS_SUCCESS, payload: rooms})
+    } catch(e) {
+        dispatch({type: GET_CHAT_ROOMS_ERROR, payload: e})
     }
 }
