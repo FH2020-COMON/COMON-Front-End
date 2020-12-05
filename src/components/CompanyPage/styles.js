@@ -36,6 +36,12 @@ export const Title = styled.p`
         transform: translateY(2px);
     `}
 
+    ${props => props.other === true ? css`
+        margin-right: auto;
+    ` : props.other === false && css`
+        margin-left: auto;
+    `}
+
     border-top-right-radius: 30px;
 `
 
@@ -78,14 +84,42 @@ export const ContentBodyRight = styled.div`
     height: 100%;
 `
 
+const ListWrapperAnimation = keyframes`
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+        display: block;
+    }
+`
+
+const ListWrapperOutAnimation = keyframes`
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opaciry: 0;
+        display: none;
+    }
+`
+
 export const ListWrapper = styled.div`
     width: 300px;
     height: 400px;
     position: absolute;
     right: 10px;
     top: 130px;
-    background: yellow;
+    background: white;
     border-radius: 3px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+
+    animation-name: ${props => props.type === "in" ? ListWrapperAnimation : ListWrapperOutAnimation};
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
 `
 
 export const NotionButton = styled.button`
@@ -166,29 +200,23 @@ const ListAnimation = keyframes`
     }
 `
 
-let ListOutAnimation
+const ListOutAnimation = keyframes`
+    0% {
+        transform: scale(1);
+        transform: translateY(0);
+        opacity: 1;
+    }
 
-window.onload = () => {
-    setTimeout(() => {
-        ListOutAnimation = keyframes`
-        0% {
-            transform: scale(1);
-            transform: translateY(0);
-            opacity: 1;
-        }
-    
-        35% {
-            transform: scale(1.1);
-        }
-    
-        100% {
-            transform: scale(0.7);
-            transform: translateY(20px);
-            opacity: 0;
-        }
-    `
-    }, 0)
-}
+    35% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(0.7);
+        transform: translateY(20px);
+        opacity: 0;
+    }
+`
 
 export const ItemWrapper = styled.div`
     height: 36px;
@@ -204,7 +232,7 @@ export const ItemWrapper = styled.div`
     transform: translateY(20px);
     opacity: 0;
 
-    display: ${props => props.type === "in" && "flex"};
+    display: ${props => props.type === "in" ? "flex" : props.type === "out" ? "flex" : "none"};
 
     ${props => props.type === "out" && css`
         transition: height 0.0001s 0.55s, margin 0.0001s 0.55s;
@@ -252,7 +280,13 @@ export const ChatItem = styled.span`
     font-size: 18px;
     font-weight: 600;
     background: rgb(230,230, 230);
-    margin-right: auto;
+    ${props => props.other === true ? css`
+        margin-right: auto;
+        margin-left: 30px;
+    ` : props.other === false && css`
+        margin-right: 30px;
+        margin-left: auto;
+    `}
 `
 
 export const ChatItemWrapper = styled.div`
@@ -326,4 +360,11 @@ export const PlusButton = styled.button`
         transition-duration: 0.05s;
         text-shadow: none;
     }
+`
+
+//Profile Card
+export const ProfileWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `

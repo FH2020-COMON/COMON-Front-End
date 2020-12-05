@@ -1,7 +1,8 @@
 import { ACCESS_TOKEN, INTERVIEW_STATE, MODAL_STATE } from "../actions/ActionTypes";
 import { INTERVIEW_STATE, 
          MODAL_STATE, 
-         CHANGE_TITLE } from "../actions/ActionTypes";
+         CHANGE_TITLE,
+         CHANGE_ANIMATION_STATE } from "../actions/ActionTypes";
 export default function(state={},action){
     switch(action.type){
         case MODAL_STATE:
