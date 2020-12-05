@@ -1,4 +1,4 @@
-const { MODAL_STATE, INTERVIEW_STATE, ACCESS_TOKEN } = require("./ActionTypes");
+const { MODAL_STATE, CHANGE_TITLE, INTERVIEW_STATE, ACCESS_TOKEN } = require("./ActionTypes");
 
 export function ModalState(state){
     return{
