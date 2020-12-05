@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import LogoImage from "./logo.png";
 const main_color = "#7B00FF";
 export const Header = styled.header`
@@ -7,7 +7,11 @@ export const Header = styled.header`
     height: 45px;
     justify-content: space-between;
     align-items: center;
-    margin: 0 200px;
+    ${props => props.margin === true ? css`
+        margin: 0 30px;
+    ` : css`
+        margin: 0 200px;
+    `}
 `;
 export const HeaderMenu = styled.ul`
     display: flex;

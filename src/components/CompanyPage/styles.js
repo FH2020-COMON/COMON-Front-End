@@ -42,6 +42,11 @@ export const Title = styled.p`
         margin-left: auto;
     `}
 
+    ${props => props.justify && css`
+        display: flex;
+        justify-content: space-between;
+    `}
+
     border-top-right-radius: 30px;
 `
 
@@ -107,8 +112,8 @@ const ListWrapperOutAnimation = keyframes`
 `
 
 export const ListWrapper = styled.div`
-    width: 300px;
-    height: 400px;
+    width: 320px;
+    max-height: 430px;
     position: absolute;
     right: 10px;
     top: 130px;
@@ -117,7 +122,16 @@ export const ListWrapper = styled.div`
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
     opacity: 0;
 
-    animation-name: ${props => props.type === "in" ? ListWrapperAnimation : ListWrapperOutAnimation};
+    display: flex;
+    flex-wrap: wrap;
+
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    animation-name: ${props => props.type === "in" ? ListWrapperAnimation : props.type === "out" ? ListWrapperOutAnimation : "asd"};
     animation-duration: 0.3s;
     animation-fill-mode: forwards;
 `
@@ -158,20 +172,23 @@ export const PhoneButton = styled.button`
 `
 
 
-export const CategoryButton = styled.div`
-    display: flex;
-    width: calc(100% - 72px);
-    height: 36px;
-    margin: 16px 36px 6px;
-    border: none;
+export const CategoryButton = styled.button`
+    color: ${props => props.color || "black"};
+    background: ${props => props.bgColor || "rgba(0, 0, 0, 0)"};
     outline: none;
-    background: rgba(0, 0, 0, 0);
     cursor: pointer;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
-    justify-content: space-between;
+    border: none;
+    font-size: 16px;
+    transition: all 0.2s linear;
+
+    &:hover {
+        text-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    &:active {
+        transition-duration: 0.05s;
+        text-shadow: none;
+    }
 `
 
 export const Line = styled.hr`
@@ -363,8 +380,42 @@ export const PlusButton = styled.button`
 `
 
 //Profile Card
+export const TitleJik = styled.p`
+    color: ${props => props.color || "black"};
+    font-size: ${props => props.fontSize || "18px"};
+    font-weight: 600;
+    transition: all 0.05s linear;
+    opacity: 0;
+    transform: translateY(0px);
+`
+
 export const ProfileWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 75px;
+    height: 95px;
+
+    &:hover ${TitleJik} {
+        opacity: 1;
+        transform: translateY(4px);
+    }
+
+    &:nth-child(3n + 1) {
+        margin: 20px ${(320 - 225) / 4}px 10px;
+    }
+    &:nth-child(3n + 2) {
+        margin: 20px ${(320 - 225) / 4}px 10px 0;
+    }
+    &:nth-child(3n + 3) {
+        margin: 20px ${(320 - 225) / 4}px 10px 0;
+    }
+`
+
+export const ProfileImg = styled.img`
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-bottom: 15px;
 `

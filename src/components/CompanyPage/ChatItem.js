@@ -1,5 +1,4 @@
 import * as S from './styles'
-import socket from '../../socket'
 
 const ChatItem = (props) => {
     return(

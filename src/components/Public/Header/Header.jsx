@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, withRouter, useHistory } from "react-router-dom";
 import { ModalState } from "../../../modules/actions/userAction";
 import * as S from "./styles" 
-function Header(){
+function Header(props){
     const history = useHistory()
     const dispatch = useDispatch();
     const token = useSelector(state=>state.user.token)
@@ -12,7 +12,7 @@ function Header(){
     }
     return(
         <>
-            <S.Header>
+            <S.Header margin={props.margin}>
                 <S.Logo onClick={() => history.push("/companynotice")}></S.Logo>
                 <S.HeaderMenu>
                     {
