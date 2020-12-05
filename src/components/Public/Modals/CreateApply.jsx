@@ -10,8 +10,13 @@ function CreateFunding(){
     const [file2,setFile2]=useState({ name: "선택된 파일 없음"});
     const dispatch=useDispatch();
     const [value, onChange]=useInputs({
-        crowd_name: "",
-        destination_amount : ""
+        apply_name: "",
+        hash_tag : "",
+        year: new Date().getFullYear(),
+        month: new Date().getMonth(),
+        day: new Date().getDate(),
+        hour : new Date().getHours(),
+        minute: new Date().getMinutes(),
     })
     function handler(e){  
         setFile(e.target.files[0]);
@@ -24,12 +29,9 @@ function CreateFunding(){
         let data=new FormData();
         data.append("files", file);
         data.append("files", file2);
-        request("post",`/crowd/${value.crowdTitle}/${value.destinationAmount} `,{
-            'Authorization' : "Bearer " + localStorage.getItem("access_token"),
-            'Content-Type': 'multipart/form-data',
-        }, data)
+        request("post",`/apply`,{'Authorization' : "Bearer " + localStorage.getItem("access_token")}, value)
         .then((res)=>{
-            alert("생성되었습니다")
+            alert("생성되었습니다.")
             dispatch(ModalState(null));
         })
     }
@@ -40,12 +42,12 @@ function CreateFunding(){
             </S.Modal_Logo>
             <S.Login_Form>
                 <h4>제목</h4>
-                <input name="crowd_name" value={value.crowd_name} onChange={onChange} placeholder="펀딩 타이틀을 입력하세요" type="text"/>
-                <h4>목표금액</h4>
-                <input name="destination_amount" value={value.destination_amount} onChange={onChange} placeholder="목표금액을 설정해주세요" type="text"/>
+                <input name="apply_name" value={value.apply_name} onChange={onChange} placeholder="모집 타이틀을 입력하세요" type="text"/>
+                <h4>해시태그</h4>
+                <input name="hash_tag" value={value.hash_tag} onChange={onChange} placeholder="태그를 설정해주세요" type="text"/>
                 <input onChange={handler} type="file"/>
                 <input onChange={handler2} type="file"/>
-                <button onClick={onSubmit}>펀딩 생성하기</button>
+                <button onClick={onSubmit}>공고 생성하기</button>
             </S.Login_Form>
         </S.Modal_Wrapper>
     );

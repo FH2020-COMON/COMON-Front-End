@@ -4,7 +4,9 @@ import { useCallback, useRef, useState } from "react";
 import { Viewer } from "hwp.js";
 import { request } from "../../modules/axios/axios";
 import Axios from "axios";
+import { useHistory } from "react-router";
 function CompanyApply(){
+    const history = useHistory();
     const [file,setFile]=useState({ name: "선택된 파일 없음"});
     const ref = useRef(null)
     const showViewer = useCallback((file) => {
@@ -27,18 +29,21 @@ function CompanyApply(){
     }
     function submit(){
         if(file.name!="선택된 파일 없음"){
-            let data=new FormData();
+            const data=new FormData();
+            data.append("companyid", "0");
             data.append("file", file);
             console.log(data);
             const url="http://ec2-54-180-98-91.ap-northeast-2.compute.amazonaws.com/recruiting/apply"
             Axios.post(url, data, {
                 headers: {
+                    'Authorization' : "Bearer " + localStorage.getItem("access_token"),
                     'Content-Type': 'multipart/form-data',
-                    'Authorization' : "Bearer " + localStorage.getItem("access_token")
                 }
             })
             .then((res)=>{
                 console.log(res);
+                alert("지원신청이 완료되었습니다.")
+                history.push("/companynotice");
             })
             .catch((e)=>{
                 console.log(e);

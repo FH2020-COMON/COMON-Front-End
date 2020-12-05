@@ -58,13 +58,6 @@ function CrowdList(props){
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
     const history=useHistory();
-    function ToLink(id){
-        if(props.type=="notice"){
-            history.push("/companyapply/" + id.apply_id); 
-        }else{    
-            history.push("/crowddetail/" + id.crowd_id);
-        }
-    }
     useEffect(()=>{
         const url=props.type=="notice" ? "/apply":"/crowd"
         setLoading(true);
@@ -81,7 +74,7 @@ function CrowdList(props){
         <S.CrowdList>
             {
                 data.map((val, i)=>{
-                    return(<CrowdCard onClick={()=>ToLink(val)} type={props.type} data={val} index={i}></CrowdCard>);
+                    return(<CrowdCard type={props.type} data={val} index={i}></CrowdCard>);
                 })
             }  
         </S.CrowdList>
