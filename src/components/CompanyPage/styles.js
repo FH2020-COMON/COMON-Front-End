@@ -192,3 +192,69 @@ export const ListButton = styled.button`
     outline: none;
     cursor: pointer;
 `
+
+//chatView
+export const ChatWrapper = styled.div`
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+`
+
+export const ChatItem = styled.span`
+    padding: 5px 17px;
+    font-size: 18px;
+    font-weight: 600;
+    background: rgb(230,230, 230);
+    margin-right: auto;
+`
+
+export const ChatItemWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+`
+
+export const ChatBottomWrapper = styled.form`
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 55px;
+    background: rgba(0, 0, 0, 0);
+    transform: translateY(-10px);
+`
+
+export const ChatInput = styled.input`
+    background: rgb(240, 240, 240);
+    border-radius: 10px;
+    width: 100%;
+    margin-right: 20px;
+    border: none;
+    height: 55px;
+    outline: none;
+    padding: 0 20px;
+    font-size: 20px;
+`
+
+export const ChatButton = styled.button`
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 6px 10px;
+    border-radius: 10px;
+    outline: none;
+    white-space: nowrap;
+    background: #7B00FF;
+    color: white;
+    font-weight: 600;
+`
+
+export const ChatTopWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column; 
+    height: calc(100% - 60px);
+`
