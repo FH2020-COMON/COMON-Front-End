@@ -3,6 +3,7 @@ import * as S from './styles'
 import Header from '../Public/Header/Header'
 import CompanyParentItem from './CompanyParentItem'
 import MarkdownView from './MarkdownVeiw'
+import ChatView from './ChatView'
 
 import { Route } from 'react-router-dom'
 
@@ -18,7 +19,7 @@ const CompanyPage = React.memo(() => {
             <Header />
             <S.ContentWrapper>
                 <S.ContentHeader>
-                    <S.Title width="280px" color="white" fontSize="19px" padding="0 15px" bgColor="#7B00FF">(주)스타트업최고</S.Title>
+                    <S.Title width="280px" color="white" fontSize="19px" padding="0 33px" bgColor="#7B00FF">(주)스타트업최고</S.Title>
                     <S.ListButton onClick={onClickList}><i className="fas fa-user-friends fa-2x" style={{color: "#7B00FF"}} /></S.ListButton>
                     {
                         listState === true && (
@@ -34,7 +35,8 @@ const CompanyPage = React.memo(() => {
                         <CompanyParentItem title="채팅" />
                     </S.ContentBodyLeft>
                     <S.ContentBodyRight>
-                        <Route path="/company/:MarkName" component={MarkdownView} /> 
+                        <Route path="/company/document/:MarkName" component={MarkdownView} /> 
+                        <Route path="/company/chat/:ChatId" component={ChatView} /> 
                     </S.ContentBodyRight>
                 </S.ContentBodyWrapper>
             </S.ContentWrapper>
