@@ -10,8 +10,8 @@ function Mypage(){
     const [data,setData]=useState(0)
     const [loading,setLoading]=useState(0)
     const dispatch = useDispatch();
-    function setModal(){
-        dispatch(ModalState("SwitchAccount"));
+    function setModal(state){
+        dispatch(ModalState(state));
     }
     function Logout(){
         localStorage.clear();
@@ -38,12 +38,13 @@ function Mypage(){
                             <S.Myname>{data.name} | 사장</S.Myname>
                             <S.Mycompany>{data.company_name}</S.Mycompany>
                         </S.Mydetails>
-                        <S.SwitchAccount onClick={setModal}>계정전환</S.SwitchAccount>
+                        <S.SwitchAccount onClick={()=>setModal("SwitchAccount")}>계정전환</S.SwitchAccount>
                     </S.Myprofile>
                     <Spectrum></Spectrum>
                     <S.MyElement><i className="fas fa-flag"></i> 공지사항</S.MyElement>
                     <S.MyElement><Link to="/applylist"><i className="fas fa-clipboard-list"></i> 면접현황</Link></S.MyElement>
-                    <S.MyElement><i className="fas fa-exclamation-circle"></i> 버전정보</S.MyElement>
+                    <S.MyElement onClick={()=>setModal("CreateApply")}><i className="fas fa-users"></i> 모집공고</S.MyElement>
+                    <S.MyElement onClick={()=>setModal("CreateFunding")}><i className="fas fa-coins"></i> 펀딩시작</S.MyElement>
                     <S.MyElement><i className="fas fa-phone-alt"></i> 고객센터</S.MyElement>
                
                     <S.Logout onClick={Logout}>로그아웃</S.Logout>

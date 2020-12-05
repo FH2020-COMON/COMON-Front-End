@@ -39,7 +39,7 @@ function App() {
         <Route exact path="/interview" component={InterviewPage}></Route>
         <Route exact path="/applylist" component={ApplyList}></Route>
         <Route exact path="/applicantlist" component={ApplicantList}></Route>
-        <Route exact path="/apply" component={CompanyApply}></Route>
+        <Route exact path="/apply/:id" component={CompanyApply}></Route>
         <Route path="/company" component={CompanyPage} />
       </BrowserRouter>
     </>

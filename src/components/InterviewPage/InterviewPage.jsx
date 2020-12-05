@@ -13,9 +13,9 @@ function InterviewPage(){
     return(
         <S.Wrapper>
             {
-                state==0?
+                state==1?
                     <InterviewVerify></InterviewVerify>
-                :state==1?
+                :state==0?
                     <Interview></Interview>
                 :null
             }

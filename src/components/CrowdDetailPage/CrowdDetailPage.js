@@ -10,10 +10,10 @@ import { request } from '../../modules/axios/axios'
 const CrowdDetailPage = React.memo((props) => {
     const [percent, setPercent] = useState(0)
     const [count, setCount] = useState(0)
-    const [price, setPrice] = useState(0)
-    const [goalPrice, setGoalPrice] = useState(0)
+    const [now_amount, setPrice] = useState(0)
+    const [destination_amount, setGoalPrice] = useState(0)
     const [loading, setLoading] =useState(false);
-    const [data,setData] = useState(null);
+    const [data,setData] = useState();
     const cb = useRef()
     const cbP = useRef()
     const cbGP = useRef()
@@ -29,29 +29,34 @@ const CrowdDetailPage = React.memo((props) => {
         request("get","/crowd/" + props.match.params.id, "", "")
         .then((res)=>{
             setData(res);
-            alert(res);
+            console.log(res);
         })
         setLoading(false);
         
     },[])
     const priceCallback = () => {
-        setPrice(Math.round(price + (data.price / 100)))
+        setPrice(Math.round(now_amount + (data.now_amount / 100)))
     }
 
-    const goalPriceCallback = () => {
-        setGoalPrice(Math.round(goalPrice + (data.goalPrice / 100)))
+    const goalpriceCallback = () => {
+        setGoalPrice(Math.round(destination_amount + (data.destination_amount / 100)))
     }
 
     useEffect(() => {
         cb.current = callback
         cbP.current = priceCallback
-        cbGP.current = goalPriceCallback
+        cbGP.current = goalpriceCallback
     })
 
     useEffect(() => {
-        setTimeout(() => {
-            setPercent(Math.round((data.price / data.goalPrice) * 100))
-        }, 100)
+        
+            setTimeout(() => {
+                try{
+                    setPercent(Math.round((data.now_amount / data.destination_amount) * 100))
+                }catch(e){}
+            }, 100)
+        
+
     }, [])
 
     useEffect(() => {
@@ -59,8 +64,10 @@ const CrowdDetailPage = React.memo((props) => {
     }, [percent])
 
     useEffect(() => {
-        interP.current = setInterval(() => {cbP.current()}, 450 / data.price)
-        interGP.current = setInterval(() => {cbGP.current()}, 450 / data.goalPrice)
+        try{
+            interP.current = setInterval(() => {cbP.current()}, 450 / data.now_amount)
+            interGP.current = setInterval(() => {cbGP.current()}, 450 / data.destination_amount)
+        }catch(e){}
     }, [])
 
     useEffect(() => {
@@ -70,20 +77,26 @@ const CrowdDetailPage = React.memo((props) => {
     }, [count])
 
     useEffect(() => {
-        if(price >= data.price) {
-            clearInterval(interP.current)
-        }
-    }, [price])
+        try{
+            if(now_amount >= data.now_amount) {
+                clearInterval(interP.current)
+            }
+        }catch(e){}
+    }, [now_amount])
 
     useEffect(() => {
-        if(goalPrice >= data.goalPrice) {
+        try{
+        if(destination_amount >= data.destination_amount) {
             clearInterval(interGP.current)
         }
-    }, [goalPrice])
+        }catch(e){
+
+        }
+    }, [destination_amount])
 
     const countRender = React.useMemo(() => (
-        <S.Title fontSize="26px">{price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</S.Title>
-    ), [price])
+        <S.Title fontSize="26px">{now_amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</S.Title>
+    ), [now_amount])
 
     const percentRender = React.useMemo(() => (
         <S.Title>달성률 {count}%</S.Title>
@@ -104,15 +117,15 @@ const CrowdDetailPage = React.memo((props) => {
                 <Header />
                 <S.ContentWrapper>
                     <S.ContentTopWrapper>
-                        <S.Title mb="6px" color="rgb(140,140,140)" fontSize="18px">{data.companyName}</S.Title>
-                        <S.Title mb="15px" fontSize="31px">{data.title}</S.Title>
+                        <S.Title mb="6px" color="rgb(140,140,140)" fontSize="18px">{data.company_name}</S.Title>
+                        <S.Title mb="15px" fontSize="31px">{data.crowd_name}</S.Title>
                     </S.ContentTopWrapper>
                     <S.ContentBottomWrapper>
                         <S.ImgMain src="https://scontent.xx.fbcdn.net/v/t1.15752-9/127925082_717831708864362_3306144467799133087_n.png?_nc_cat=100&ccb=2&_nc_sid=58c789&_nc_ohc=__oMOf0RcIgAX8Yyy9-&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=b02b97f2b6f8cc878eeb733d881a38a8&oe=5FEE0A99" />
                         <S.DetailWrapper>
-                            <S.Title mb="30px" color="#7B00FF" fontSize="22px">{data.category}</S.Title>
-                            <S.TempWrapper>{countRender}<S.Title style={{marginLeft: "10px"}} color="rgb(150, 150, 150)" fontSize="20px">{data.state}</S.Title></S.TempWrapper>
-                            <S.TempWrapper justify>{percentRender}<S.Title>목표금액 {data.goalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</S.Title></S.TempWrapper>
+                            <S.Title mb="30px" color="#7B00FF" fontSize="22px">{data.hash_tag}</S.Title>
+                            <S.TempWrapper>{countRender}<S.Title style={{marginLeft: "10px"}} color="rgb(150, 150, 150)" fontSize="20px">펀딩중</S.Title></S.TempWrapper>
+                            <S.TempWrapper justify>{percentRender}<S.Title>목표금액 {data.destination_amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</S.Title></S.TempWrapper>
                             <S.ProgressBar>
                                 {gageRender}
                             </S.ProgressBar>
