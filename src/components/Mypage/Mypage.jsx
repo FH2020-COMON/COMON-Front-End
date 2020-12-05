@@ -2,11 +2,16 @@ import * as S from "./styles"
 import Header from "../Public/Header/Header"
 import Spectrum from "../Public/Spectrum/Spectrum";
 import { useDispatch } from "react-redux";
-import { ModalState } from "../../modules/actions/userAction";
+import { ModalState, setToken } from "../../modules/actions/userAction";
 function Mypage(){
     const dispatch = useDispatch();
     function setModal(){
         dispatch(ModalState("SwitchAccount"));
+    }
+    function Logout(){
+        localStorage.clear();
+        dispatch(setToken(null));
+        alert("로그아웃 되었습니다.")
     }
     return(
         <>
@@ -27,7 +32,7 @@ function Mypage(){
                     <S.MyElement><i className="fas fa-exclamation-circle"></i> 버전정보</S.MyElement>
                     <S.MyElement><i className="fas fa-phone-alt"></i> 고객센터</S.MyElement>
                
-                    <S.Logout>로그아웃</S.Logout>
+                    <S.Logout onClick={Logout}>로그아웃</S.Logout>
                 </S.Wrapper>
             </S.Container>
         </>

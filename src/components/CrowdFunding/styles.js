@@ -14,8 +14,7 @@ const FadeIn = keyframes`
 `
 
 export const CrowdWrapper= styled.div`
-    margin: 0 7rem;
-    width: calc(100% - 14rem);
+    padding: 0 250px;
 `
 export const CrowdList = styled.div`
     display: flex;
@@ -26,8 +25,11 @@ export const ImgBox = styled.div`
     width: 100%;
 `;
 export const CrowdCard = styled.div`
-    max-width: 330px;
+    max-width: 300px;
     height: 291px;
+    & img{
+        width: 100%;
+    }
     font-weight: bold;
     cursor: pointer;
     border-radius: 5px;
@@ -36,28 +38,28 @@ export const CrowdCard = styled.div`
 
     @media only screen and (min-width: 910px) and (max-width: 1219px) {
         &:nth-child(2n + 2) {
-            margin-left: calc((100% - (330px * 2)) / 1);
+            margin-left: calc((100% - (300px * 2)) / 1);
         }
     }
 
     @media only screen and (min-width: 1220px) and (max-width: 1559px) {
         &:nth-child(3n + 2) {
-            margin-left: calc((100% - (330px * 3)) / 2);
+            margin-left: calc((100% - (300px * 3)) / 2);
         }
         &:nth-child(3n + 3) {
-            margin-left: calc((100% - (330px * 3)) / 2);
+            margin-left: calc((100% - (300px * 3)) / 2);
         }
     }
 
     @media only screen and (min-width: 1560px) {
         &:nth-child(4n + 2) {
-            margin-left: calc((100% - (330px * 4)) / 3);
+            margin-left: calc((100% - (300px * 4)) / 3);
         }
         &:nth-child(4n + 3) {
-            margin-left: calc((100% - (330px * 4)) / 3);
+            margin-left: calc((100% - (300px * 4)) / 3);
         }
         &:nth-child(4n + 4) {
-            margin-left: calc((100% - (330px * 4)) / 3);
+            margin-left: calc((100% - (300px * 4)) / 3);
         }
     }
     opacity: 0;

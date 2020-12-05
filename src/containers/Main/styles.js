@@ -79,7 +79,6 @@ export const HeaderWrapper = styled.div`
 export const HeaderButtonWrapper = styled.div`
     display: flex;
     justify-content: space-between;
-    width: 150px;
     & a{
         color: white;
     }
@@ -89,6 +88,7 @@ export const HeaderButton = styled.button`
     background: rgba(0, 0, 0, 0);
     border: none;
     color: white;
+    margin: 0 10px;
     font-size: 17px;
     outline: none;
     transition: 0.1s text-shadow linear, 0.08s color linear;

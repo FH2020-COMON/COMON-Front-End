@@ -21,7 +21,7 @@ export const RankWrapper = styled.div`
     height: 430px;
     border-top: 1px solid #EEEEEE;
     border-bottom: 1px solid #EEEEEE;
-    padding: 45px 110px;
+    padding: 45px 250px;
     display: flex;
     flex-direction: column; 
     justify-content: center;
@@ -81,8 +81,8 @@ export const CompanyHead = styled.div`
 `   
 
 export const CompanyCard = styled.div`
-    width: 240px;
-    height: 240px;
+    width: 210px;
+    height: 210px;
     border-radius: 50%;
     background-image: url(${props => props.imgPath || "none"});
     background-repeat: no-repeat;
