@@ -20,7 +20,7 @@ function Header(props){
                             <>
                             <li><Link to="/mypage">MY</Link></li>
                             <li><Link to="/crowdfunding">펀딩</Link></li>
-                            <li><Link to="/mypage">나의 회사</Link></li>
+                            <li><Link to="/company">나의 회사</Link></li>
                             </>
                         :<li onClick={()=>setModal("Login")}>로그인 / 회원가입</li>
                     }
