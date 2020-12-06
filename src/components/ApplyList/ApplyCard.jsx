@@ -1,5 +1,5 @@
 import * as S from "./styles"
-function ApplyCard(props){
+function ApplyCard({data}){
     return(
         <S.Card>
             <S.CompanyDetails>
@@ -9,7 +9,7 @@ function ApplyCard(props){
                     <S.Date>면접일자 : 2020/12/5 7시</S.Date>
                 </S.Details>
             </S.CompanyDetails>
-            <S.InterViewBT>면접하기</S.InterViewBT>
+            <S.InterViewBT onClick={()=>window.location.href="https://fh2020-comon.github.io/WebRTC/"}>면접하기</S.InterViewBT>
         </S.Card>
     )
 }
