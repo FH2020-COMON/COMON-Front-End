@@ -44,7 +44,7 @@ function CrowdCard (props){
                             <C.Title fontSize="12px" color="rgb(150, 150, 150)">{data.company_name}</C.Title>
                             <S.CardFooter>
                                 <C.Title fontSize="16px" color="rgb(110, 110, 110)">{data.dday}</C.Title>
-                                <S.LikeButton><i className="fas fa-heart fa-sm" /> 369</S.LikeButton>
+                                <S.LikeButton><i className="fas fa-heart fa-sm" /> 0</S.LikeButton>
                             </S.CardFooter>
                         </>    
                     )
